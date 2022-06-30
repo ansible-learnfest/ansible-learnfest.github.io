@@ -18,7 +18,7 @@
 	"title": "Track 1: AAP Administrator",
 	"tags": [],
 	"description": "",
-	"content": "Task 2: "
+	"content": "Track 1 “Ansible Automation Platform Administrator” Tasks:\n Install Automation Controller Write a Playbook using the ansible.controller collection to configure Automation Controller Install Private Automation Hub, sync with Red Hat Automation Hub Extend Automation Mesh Optional: Extending to multi node/cluster (Needs separate DB)  "
 },
 {
 	"uri": "https://ansible-learnfest.github.io/3-track-1/automation-controller/",
