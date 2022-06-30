@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Track 1: AAP Administrator :: Ansible LearnFest</title>
+    <title>Install Private Automation Hub :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1656604931" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/3-track-1/">
+  <body class="" data-url="/3-track-1/3-install-pah/">
     <nav id="sidebar" class="">
 
 
@@ -143,8 +143,8 @@
   
     
     <li data-nav-id="/3-track-1/" title="Track 1: AAP Administrator" class="dd-item
+        parent
         
-        active
         
         ">
       <a href="https://ansible-learnfest.github.io/3-track-1/">
@@ -225,7 +225,7 @@
     
     <li data-nav-id="/3-track-1/3-install-pah/" title="Install Private Automation Hub" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/3-track-1/3-install-pah/">
@@ -329,7 +329,13 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Track 1: AAP Administrator
+            
+            
+          
+          
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/3-track-1/'>Track 1: AAP Administrator</a> > Install Private Automation Hub
+          
+        
           
         
           
@@ -342,11 +348,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#track-1-ansible-automation-platform-administrator">Track 1 “Ansible Automation Platform Administrator”</a></li>
-      </ul>
-    </li>
+    <li><a href="#task-3-install-private-automation-hub">Task 3: Install Private Automation Hub</a></li>
   </ul>
 </nav>
     </div>
@@ -364,7 +366,7 @@
           
             <h1>
               
-              Track 1: AAP Administrator
+              Install Private Automation Hub
             </h1>
           
 
@@ -372,14 +374,36 @@
 
 
 
-	<h3 id="track-1-ansible-automation-platform-administrator">Track 1 “Ansible Automation Platform Administrator”</h3>
-<p><strong>Tasks:</strong></p>
+	<h2 id="task-3-install-private-automation-hub">Task 3: Install Private Automation Hub</h2>
+<p>The next step on your way to a full AAP infrastructure is to install <strong>Private Automation Hub (PAH)</strong> as on-premise complement to <strong>Red Hat Automation Hub</strong>. PAH allows to mirror Automation Hub and Ansible Galaxy collections as well as own in-house content. And in addition PAH can act as a container registry for execution environments images.</p>
+<p><strong>Prerequisites</strong></p>
 <ul>
-<li>Install Automation Controller</li>
-<li>Write a Playbook using the <code>ansible.controller</code> collection to configure Automation Controller</li>
-<li>Install Private Automation Hub, sync with Red Hat Automation Hub</li>
-<li>Extend Automation Mesh</li>
-<li>Optional: Extending to multi node/cluster (Needs separate DB)</li>
+<li>Automation Controller is running &amp; accessible</li>
+<li>You can connect to your instance 2</li>
+</ul>
+<p><strong>Tasks</strong></p>
+<ul>
+<li>Install Private Automation Hub on your instance number 2, the documentation is <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.2/html-single/red_hat_ansible_automation_platform_installation_guide/index#single-machine-scenario">here</a> in chapter <strong>2.3</strong>.</li>
+<li>The easiest way is to SSH into to the PAH instance, download the installer bundle like you did for Controller and install PAH locally.</li>
+</ul>
+
+<div class="notices tip" ><p>You can run the AAP installer in different ways, of course. You could run it from a competely different machine and connect to the hosts AAP is to be installed on, you could run it on the Controller instance like you did and have it connect to the PAH instance&hellip; but for now do it the easy way so you don&rsquo;t have to fiddle with SSH keys and <code>become</code> settings. :)</p>
+</div>
+
+<ul>
+<li>So go ahead, SSH to instance 2, become <code>root</code> and download the installer bundle again</li>
+<li>Take the inventory PAH example from the docs referenced above and adapt it to your needs.</li>
+<li>Run the installer with your customized inventory file</li>
+</ul>
+<p><strong>Goal</strong></p>
+<ul>
+<li>The Playbook configured the objects needed to install and run Apache on instance 5</li>
+<li>Opening the default webpage in a browser works.</li>
+</ul>
+<p><strong>Tips</strong></p>
+<ul>
+<li>The collection/module documentation is here in <a href="https://console.redhat.com/ansible/automation-hub">Automation Hub</a>. Go to <strong>Collections</strong> and filter for <code>controller</code>.</li>
+<li>If you get confused by all the naming changes (<code>ansible.controller</code> in Automation Hub, <code>awx.awx</code> upstream, lot&rsquo;s of references to <code>Tower</code> in the docs)&hellip; don&rsquo;t be, all will finally be good! (TM)</li>
 </ul>
 
 
@@ -507,6 +531,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -523,6 +548,9 @@
             
                 
                     
+                        
+                        
+                    
                 
                 
 
@@ -546,10 +574,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/2-getting-started/" title="Prepare Base Environment"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/3-track-1/2-config-controller/" title="Configure Automation Controller"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/3-track-1/1-automation-controller/" title="Install Automation Controller" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/3-track-1/4-automation-mesh/" title="Extend Automation Mesh" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
