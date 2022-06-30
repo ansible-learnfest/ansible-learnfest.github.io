@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Ansible LearnFest</title>
+    <title>Install Automation Controller :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1656593745" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/1-intro/">
+  <body class="" data-url="/3-track-1/automation-controller/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/1-intro/" title="Introduction" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/1-intro/">
@@ -143,7 +143,7 @@
   
     
     <li data-nav-id="/3-track-1/" title="Track 1: AAP Administrator" class="dd-item
-        
+        parent
         
         
         ">
@@ -173,7 +173,7 @@
     
     <li data-nav-id="/3-track-1/automation-controller/" title="Install Automation Controller" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/3-track-1/automation-controller/">
@@ -277,7 +277,13 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Introduction
+            
+            
+          
+          
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/3-track-1/'>Track 1: AAP Administrator</a> > Install Automation Controller
+          
+        
           
         
           
@@ -290,12 +296,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a>
-      <ul>
-        <li><a href="#track-1-ansible-automation-platform-administrator">Track 1 “Ansible Automation Platform Administrator”</a></li>
-        <li><a href="#track-2-automation-content-developer">Track 2 “Automation Content Developer”</a></li>
-      </ul>
-    </li>
+    <li><a href="#task-1-install-automation-controller">Task 1: Install Automation Controller</a></li>
   </ul>
 </nav>
     </div>
@@ -313,7 +314,7 @@
           
             <h1>
               
-              Introduction
+              Install Automation Controller
             </h1>
           
 
@@ -321,47 +322,59 @@
 
 
 
-	<h2 id="introduction">Introduction</h2>
-<p>The LearnFest is structured into two tracks, so this is coming your way:</p>
-<h3 id="track-1-ansible-automation-platform-administrator">Track 1 “Ansible Automation Platform Administrator”</h3>
-<p><strong>General Prerequisites:</strong></p>
+	<h2 id="task-1-install-automation-controller">Task 1: Install Automation Controller</h2>
+<p>You should now have access to your AWS instances and you should be able to SSH into them. It’s time to deploy Ansible Automation Platform 2.2! We’ll start with installing Automation Controller on your instance 1.</p>
+<p><strong>Prerequisites</strong></p>
 <ul>
-<li>Access to PC with Ansible (esp <code>ansible-navigator</code>)</li>
-<li>Credentials/tokens to download the AAP2 installer and access the Red Hat Container registry and Red Hat Automation Hub
+<li>Able to SSH into your instances and to become root</li>
+<li>A Red Hat Customer Portal account with an AAP subscription</li>
+</ul>
+<p><strong>Tasks</strong></p>
 <ul>
-<li>This usually means an account to the Red Hat Customer Portal</li>
+<li>SSH into your instance number 1 to run the installer there.</li>
+<li>Become <code>root</code>: <code>sudo -i</code></li>
+<li>Download the <strong>Ansible Automation Platform 2.2.0 Setup Bundle</strong> installer from Customer Portal to your instance.
+<ul>
+<li>The link to the download location can also be found in the installation docs.</li>
+<li>Tip: Copy the download link and use <code>curl</code> with single quotes around the link and the <code>-o &lt;filename&gt;</code> option to save to file.</li>
 </ul>
 </li>
-<li>Optional: Write access to a GitLab or GitHub repository</li>
 </ul>
-<p><strong>Tasks:</strong></p>
+<p><strong>In general follow the installation documentation to install Automation Controller with a database on the same node.</strong></p>
 <ul>
-<li>Install Automation Controller</li>
-<li>Write a Playbook using the <code>ansible.controller</code> collection to configure Automation Controller</li>
-<li>Install Private Automation Hub, sync with Red Hat Automation Hub</li>
-<li>Extend Automation Mesh</li>
-<li>Optional: Extending to multi node/cluster (Needs separate DB)</li>
-</ul>
-<h3 id="track-2-automation-content-developer">Track 2 “Automation Content Developer”</h3>
-<p><strong>General Prerequisites:</strong></p>
+<li>Extract installer tarball, change into the directory.</li>
+<li>Create the most simple <code>inventory</code> file, do not install privat automation hub or anything else yet. Backup the default <code>inventory</code> file before.
 <ul>
-<li>Automation Controller and Private Automation Hub is up and running</li>
-<li>Access to <strong>ansible-builder</strong> is installed on RHEL 8 VM/instance</li>
+<li>There is an example for a basic inventory file for our simple installation scenario in chapter 2 of the installation documentation (see tips below).</li>
+<li><strong>Attention: you can’t use “localhost” in the inventory file  anymore, change it to the FQDN of the instance</strong>.</li>
+<li>You have to change all <code>&lt;...&gt;</code> values in the template</li>
 </ul>
-<p><strong>Tasks:</strong></p>
+</li>
+<li>Hints:
 <ul>
-<li>Install and configure VSCode extension, learn how to use it</li>
-<li>Build a custom Execution Environment (EE)</li>
-<li>Use EE with <code>ansible-navigator</code></li>
-<li>Push the EE to Private Automation Hub</li>
-<li>Use the EE in Automation Controller</li>
-<li>Change the EE</li>
-<li>Discuss version pinning, requirements management etc.</li>
+<li>You can skip the docs section “Attaching your Red Hat Ansible Automation Platform subscription“ because we are using the bundle installer and the AWS RHEL instances are already attached to the default RHEL 8 repos.</li>
 </ul>
-<!-- ## Track 3 “Advanced for Gurus”
-* Automation Services Catalog
-* SSO -->
-<p><strong>Let&rsquo;s go!</strong></p>
+</li>
+<li>Run the platform installer with <code>./setup.sh</code></li>
+<li>When Automation Controller has been installed:
+<ul>
+<li>Login and attach an AAP Subscription using your Customer Portal User/Password</li>
+<li>Allow Analytics</li>
+<li>Accept</li>
+</ul>
+</li>
+<li>There you have it, your Automation Controller is up and running.</li>
+</ul>
+<p><strong>Goal</strong></p>
+<ul>
+<li>Being able to log in to the web UI with the password you provided in the inventory file.</li>
+</ul>
+<p><strong>Tips</strong></p>
+<ul>
+<li><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.2/html-single/red_hat_ansible_automation_platform_installation_guide/index">Ansible Automation Platform 2.2 Installation Guide</a></li>
+<li>There is a <a href="https://access.redhat.com/RegistryAuthentication#creating-registry-service-accounts-6">link</a> to instructions for creating a registry account in the docs (“Creating Registry Service Accounts guide”)</li>
+<li>There are instructions for obtaining the Red Hat Ansible Automation Platform installer in the docs (“Choosing and obtaining a Red Hat Ansible Automation Platform installer”)</li>
+</ul>
 
 
 
@@ -402,23 +415,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -443,6 +439,23 @@
 
                     
                     
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
                         
                     
                     
@@ -452,6 +465,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -468,6 +482,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -492,10 +509,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/3-track-1/" title="Track 1: AAP Administrator"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/2-getting-started/" title="Prepare Base Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/3-track-1/config-controller/" title="Configure Automation Controller" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
