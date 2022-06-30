@@ -23,6 +23,10 @@
   </url>
   
   <url>
+    <loc>https://ansible-learnfest.github.io/3-track-1/install-pah/</loc>
+  </url>
+  
+  <url>
     <loc>https://ansible-learnfest.github.io/</loc>
     <priority>0</priority>
   </url>
