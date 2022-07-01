@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Extend Automation Mesh :: Ansible LearnFest</title>
+    <title>Build an execution environment :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1656679368" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/3-track-1/5-automation-mesh/">
+  <body class="" data-url="/4-track-2/2-build-ee/">
     <nav id="sidebar" class="">
 
 
@@ -143,7 +143,7 @@
   
     
     <li data-nav-id="/3-track-1/" title="Track 1: AAP Administrator" class="dd-item
-        parent
+        
         
         
         ">
@@ -277,7 +277,7 @@
     
     <li data-nav-id="/3-track-1/5-automation-mesh/" title="Extend Automation Mesh" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/3-track-1/5-automation-mesh/">
@@ -309,7 +309,7 @@
   
     
     <li data-nav-id="/4-track-2/" title="Track 2: Automation Content Developer" class="dd-item
-        
+        parent
         
         
         ">
@@ -365,7 +365,7 @@
     
     <li data-nav-id="/4-track-2/2-build-ee/" title="Build an execution environment" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/4-track-2/2-build-ee/">
@@ -499,7 +499,7 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/3-track-1/'>Track 1: AAP Administrator</a> > Extend Automation Mesh
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/4-track-2/'>Track 2: Automation Content Developer</a> > Build an execution environment
           
         
           
@@ -514,7 +514,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#task-5-extend-automation-mesh">Task 5: Extend Automation Mesh</a></li>
+    <li><a href="#task-2-build-an-execution-environment">Task 2: Build an execution environment</a></li>
   </ul>
 </nav>
     </div>
@@ -532,7 +532,7 @@
           
             <h1>
               
-              Extend Automation Mesh
+              Build an execution environment
             </h1>
           
 
@@ -540,15 +540,34 @@
 
 
 
-	<h2 id="task-5-extend-automation-mesh">Task 5: Extend Automation Mesh</h2>
+	<h2 id="task-2-build-an-execution-environment">Task 2: Build an execution environment</h2>
 <p><strong>Prerequisites</strong></p>
-<ul>
-<li>Automation Controller is running &amp; accessible</li>
-<li>You can run <code>ansible-navigator</code> on a laptop/VM.</li>
-</ul>
 <p><strong>Tasks</strong></p>
+<ul>
+<li>Install ansible-builder: on RHEL this is provided by the AAP repo, on Fedora you will need “pip install ansible-builder”, it’s recommended to use a virtual environment in this case</li>
+<li>Create an execution environment with the following requirements
+<ul>
+<li>Base image is ee-supported-rhel8</li>
+<li>Add a community collection e.g. containers.podman</li>
+<li>Add a supported content collection e.g. azure.azcollection</li>
+<li>Experiment with the other options, e.g. adding an RPM or Python package</li>
+<li>Use ansible-builder to build the EE</li>
+</ul>
+</li>
+<li>Configure ansible-navigator to use the previously created EE either by specifying it on the command line or by creating an ansible-builder configuration file</li>
+<li>Inspect your EE by using ansible-navigator, e.g. get the list of included collections, ansible versions etc.</li>
+<li>Run a playbook with your EE and verify everything works as expected</li>
+<li>Use environment variables to provide your Azure credentials and write a playbook using the azure.azcollection to create objects in Azure - you can get Azure credentials from RHPDS’ open environments</li>
+</ul>
 <p><strong>Goal</strong></p>
 <p><strong>Tips</strong></p>
+<ul>
+<li>Ansible-builder documentation: <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html/ansible_builder_guide">https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html/ansible_builder_guide</a><br>
+Or upstream: <a href="https://ansible-builder.readthedocs.io/en/stable/index.html">https://ansible-builder.readthedocs.io/en/stable/index.html</a></li>
+<li>Ansible-navigator documentation: <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html/ansible_navigator_creator_guide/index">https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html/ansible_navigator_creator_guide/index</a><br>
+Or upstream: <a href="https://ansible-navigator.readthedocs.io/en/latest/">https://ansible-navigator.readthedocs.io/en/latest/</a></li>
+<li>List of certified collections: <a href="https://access.redhat.com/articles/3642632">https://access.redhat.com/articles/3642632</a></li>
+</ul>
 
 
 
@@ -624,112 +643,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
                 
                 
 
@@ -776,6 +689,112 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -816,10 +835,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/3-track-1/4-use-pah/" title="Using Private Automation Hub"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/4-track-2/1-vscode/" title="The VSCode extension"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/4-track-2/" title="Track 2: Automation Content Developer" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/4-track-2/3-transfer-ee/" title="Transfer Execution Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

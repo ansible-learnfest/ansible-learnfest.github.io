@@ -35,6 +35,26 @@
   </url>
   
   <url>
+    <loc>https://ansible-learnfest.github.io/4-track-2/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/4-track-2/1-vscode/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/4-track-2/2-build-ee/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/4-track-2/3-transfer-ee/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/4-track-2/4-use-ee/</loc>
+  </url>
+  
+  <url>
     <loc>https://ansible-learnfest.github.io/</loc>
     <priority>0</priority>
   </url>

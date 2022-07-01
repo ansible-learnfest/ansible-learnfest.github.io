@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Extend Automation Mesh :: Ansible LearnFest</title>
+    <title>The VSCode extension :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1656679368" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/3-track-1/5-automation-mesh/">
+  <body class="" data-url="/4-track-2/1-vscode/">
     <nav id="sidebar" class="">
 
 
@@ -143,7 +143,7 @@
   
     
     <li data-nav-id="/3-track-1/" title="Track 1: AAP Administrator" class="dd-item
-        parent
+        
         
         
         ">
@@ -277,7 +277,7 @@
     
     <li data-nav-id="/3-track-1/5-automation-mesh/" title="Extend Automation Mesh" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/3-track-1/5-automation-mesh/">
@@ -309,7 +309,7 @@
   
     
     <li data-nav-id="/4-track-2/" title="Track 2: Automation Content Developer" class="dd-item
-        
+        parent
         
         
         ">
@@ -339,7 +339,7 @@
     
     <li data-nav-id="/4-track-2/1-vscode/" title="The VSCode extension" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/4-track-2/1-vscode/">
@@ -499,7 +499,7 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/3-track-1/'>Track 1: AAP Administrator</a> > Extend Automation Mesh
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/4-track-2/'>Track 2: Automation Content Developer</a> > The VSCode extension
           
         
           
@@ -514,7 +514,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#task-5-extend-automation-mesh">Task 5: Extend Automation Mesh</a></li>
+    <li><a href="#task-1-learn-about-the-vscode-extension">Task 1: Learn about the VSCode extension</a></li>
   </ul>
 </nav>
     </div>
@@ -532,7 +532,7 @@
           
             <h1>
               
-              Extend Automation Mesh
+              The VSCode extension
             </h1>
           
 
@@ -540,13 +540,26 @@
 
 
 
-	<h2 id="task-5-extend-automation-mesh">Task 5: Extend Automation Mesh</h2>
+	<h2 id="task-1-learn-about-the-vscode-extension">Task 1: Learn about the VSCode extension</h2>
+<p>We highly recommend making yourself familiar with VSCode and the Ansible extension. Even if you’re not planning to use it as your daily driver, it is good to know how it works to explain and show the benefit to customers.</p>
 <p><strong>Prerequisites</strong></p>
-<ul>
-<li>Automation Controller is running &amp; accessible</li>
-<li>You can run <code>ansible-navigator</code> on a laptop/VM.</li>
-</ul>
 <p><strong>Tasks</strong></p>
+<ul>
+<li>Install VSCode <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+<li>Install the Ansible extension: <a href="https://marketplace.visualstudio.com/items?itemName=redhat.ansible">https://marketplace.visualstudio.com/items?itemName=redhat.ansible</a></li>
+<li>Install ansible-navigator</li>
+<li>Configure the VSCode extension to use EE</li>
+<li>Create a playbook/role/collection</li>
+<li>Get familiar with the VSCode extension features
+<ul>
+<li>tab completion</li>
+<li>syntax highlighting</li>
+<li>tool tips for modules: hover over and FQCN, Ctrl+Click on an FQCN to open documentation</li>
+<li>Ctrl+Space for module parameters, e.g. add a task calling ansible.builtin.yum and use Ctrl+Space to see all module attributes and attribute parameters</li>
+<li>Make syntax error and notice errors in the Problem pane (Ctrl+m): you might have to make sure ansible-lint is enabled and notice it is only checking when you save a file</li>
+</ul>
+</li>
+</ul>
 <p><strong>Goal</strong></p>
 <p><strong>Tips</strong></p>
 
@@ -624,7 +637,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -640,8 +652,21 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
-                        
+            
+            
+                
                     
                 
                 
@@ -702,6 +727,25 @@
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
                         
             
             
@@ -719,9 +763,6 @@
             
         
                     
-            
-        
-                    
                         
             
             
@@ -729,37 +770,6 @@
                     
                         
                         
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -816,10 +826,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/3-track-1/4-use-pah/" title="Using Private Automation Hub"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/4-track-2/" title="Track 2: Automation Content Developer"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/4-track-2/" title="Track 2: Automation Content Developer" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/4-track-2/2-build-ee/" title="Build an execution environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
