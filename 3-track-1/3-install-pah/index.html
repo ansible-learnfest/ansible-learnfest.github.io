@@ -12,22 +12,22 @@
     <title>Install Private Automation Hub :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1656604931" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1656604931" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1656604931" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1656604931" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1656604931" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1656604931" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1656604931" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1656604931" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1656604931" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1656604931" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1656663163" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1656663163" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1656663163" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1656663163" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1656663163" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1656663163" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1656663163" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1656663163" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1656663163" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1656663163" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1656604931" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1656663163" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1656604931"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1656663163"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1656604931"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1656604931"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1656663163"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1656663163"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1656604931"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1656663163"></script>
 
     
   </div>
@@ -249,12 +249,38 @@
  
   
     
-    <li data-nav-id="/3-track-1/4-automation-mesh/" title="Extend Automation Mesh" class="dd-item
+    <li data-nav-id="/3-track-1/4-use-pah/" title="Using Private Automation Hub" class="dd-item
         
         
         
         ">
-      <a href="https://ansible-learnfest.github.io/3-track-1/4-automation-mesh/">
+      <a href="https://ansible-learnfest.github.io/3-track-1/4-use-pah/">
+          Using Private Automation Hub
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-track-1/5-automation-mesh/" title="Extend Automation Mesh" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://ansible-learnfest.github.io/3-track-1/5-automation-mesh/">
           Extend Automation Mesh
           
       </a>
@@ -384,7 +410,7 @@
 <p><strong>Tasks</strong></p>
 <ul>
 <li>Install Private Automation Hub on your instance number 2, the documentation is <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.2/html-single/red_hat_ansible_automation_platform_installation_guide/index#single-machine-scenario">here</a> in chapter <strong>2.3</strong>.</li>
-<li>The easiest way is to SSH into to the PAH instance, download the installer bundle like you did for Controller and install PAH locally.</li>
+<li>The easiest way is to SSH into to the PAH instance, download the installer bundle like you did for Controller and install PAH locally (as in &ldquo;don&rsquo;t have the installer SSH to a remote machine&rdquo;).</li>
 </ul>
 
 <div class="notices tip" ><p>You can run the AAP installer in different ways, of course. You could run it from a competely different machine and connect to the hosts AAP is to be installed on, you could run it on the Controller instance like you did and have it connect to the PAH instance&hellip; but for now do it the easy way so you don&rsquo;t have to fiddle with SSH keys and <code>become</code> settings. :)</p>
@@ -392,19 +418,18 @@
 
 <ul>
 <li>So go ahead, SSH to instance 2, become <code>root</code> and download the installer bundle again</li>
-<li>Take the inventory PAH example from the docs referenced above and adapt it to your needs.</li>
+<li>Take the inventory PAH example from the docs referenced above and adapt it to your needs.
+<ul>
+<li><strong>Remember to replace localhost/127.0.0.1 with the public FQDN</strong></li>
+</ul>
+</li>
 <li>Run the installer with your customized inventory file</li>
 </ul>
 <p><strong>Goal</strong></p>
 <ul>
-<li>The Playbook configured the objects needed to install and run Apache on instance 5</li>
-<li>Opening the default webpage in a browser works.</li>
+<li>Opening and login to the Private Automation Hub web UI works.</li>
 </ul>
 <p><strong>Tips</strong></p>
-<ul>
-<li>The collection/module documentation is here in <a href="https://console.redhat.com/ansible/automation-hub">Automation Hub</a>. Go to <strong>Collections</strong> and filter for <code>controller</code>.</li>
-<li>If you get confused by all the naming changes (<code>ansible.controller</code> in Automation Hub, <code>awx.awx</code> upstream, lot&rsquo;s of references to <code>Tower</code> in the docs)&hellip; don&rsquo;t be, all will finally be good! (TM)</li>
-</ul>
 
 
 
@@ -562,6 +587,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -577,7 +618,7 @@
 			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/3-track-1/2-config-controller/" title="Configure Automation Controller"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/3-track-1/4-automation-mesh/" title="Extend Automation Mesh" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/3-track-1/4-use-pah/" title="Using Private Automation Hub" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -587,19 +628,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1656604931"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1656604931"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1656604931"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1656604931"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1656604931"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1656604931"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1656663163"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1656663163"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1656663163"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1656663163"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1656663163"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1656663163"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1656604931"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1656604931"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1656604931"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1656663163"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1656663163"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1656663163"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1656604931"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1656663163"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
