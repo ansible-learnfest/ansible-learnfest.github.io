@@ -12,22 +12,22 @@
     <title>Using Private Automation Hub :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1656679368" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1656679368" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1656679368" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1656679368" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1656679368" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1656679368" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1656679368" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1656679368" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1656679368" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1656679368" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1656941713" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1656679368" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1656941713" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1656679368"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1656941713"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1656679368"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1656679368"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1656941713"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1656941713"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1656679368"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1656941713"></script>
 
     
   </div>
@@ -516,8 +516,9 @@
   <ul>
     <li><a href="#task-4-using-private-automation-hub">Task 4: Using Private Automation Hub</a>
       <ul>
-        <li><a href="#integrate-pah-into-your-controller">Integrate PAH into your Controller</a></li>
-        <li><a href="#add-content-to-your-empty-pah">Add content to your (empty) PAH</a></li>
+        <li><a href="#integrate-private-automation-hub-into-automation-controller">Integrate <strong>Private Automation Hub</strong> into Automation Controller</a></li>
+        <li><a href="#add-content-to-your-private-automation-hub">Add content to your <strong>Private Automation Hub</strong></a></li>
+        <li><a href="#test-private-automation-hub-integration">Test <strong>Private Automation Hub</strong> Integration</a></li>
       </ul>
     </li>
   </ul>
@@ -558,13 +559,13 @@
 <li>Add Excution Environment images</li>
 </ul>
 
-<div class="notices tip" ><p>Important: You only have to do this because we didn&rsquo;t have installer install Controller and PAH in one go. Then the integration would have been configured for you already. For the sake of understanding we decided to let you do this manually.</p>
+<div class="notices tip" ><p>Important: You only have to do this because we didn&rsquo;t have installer install Controller and PAH in one go. Then the integration would have been configured for you already. For the sake of understanding we decided to let you do this manually. Note: The Execution Environemnt images coming with the bundle installer have been pushed to the PAH registry already.</p>
 </div>
 
 <p>Let&rsquo;s start, as the docs for this are distributed over some places we&rsquo;ll give some more instructions.</p>
-<h3 id="integrate-pah-into-your-controller">Integrate PAH into your Controller</h3>
+<h3 id="integrate-private-automation-hub-into-automation-controller">Integrate <strong>Private Automation Hub</strong> into Automation Controller</h3>
 <ul>
-<li>In you PAH go to <strong>Collections-&gt;API token management</strong>, hit <strong>Create Token</strong> and copy the token. Put it somewhere, the token will change every time you have to get it this way again!</li>
+<li>In you PAH go to <strong>Collections-&gt;API token management</strong>, hit <strong>Load Token</strong> and copy the token. Put it somewhere, the token will change every time you have to get it this way again!</li>
 <li>In Controller, go to <strong>Resources-&gt;Credentials</strong> and <strong>Add</strong> three new credentials:
 <ul>
 <li>Name them <strong>PAH community</strong>, <strong>PAH certified</strong> and <strong>Pah published</strong></li>
@@ -572,10 +573,22 @@
 <li>Credential Type is <strong>Ansible Galaxy/Automation Hub API Token</strong></li>
 <li>Look up the <strong>Galaxy Server URL</strong> for each in PAH: In <strong>Collections-&gt;Repository Management</strong> lookup the <strong>Repo URL</strong> for <strong>community</strong>, <strong>published</strong> and <strong>rh-certified</strong> and put them in respectively.</li>
 <li>You have created the API token already, paste in into the credentials</li>
+<li>As your PAH is using a self-signed certificate, disable the certificate verification:
+<ul>
+<li>Go to <strong>Settings-&gt;Jobs Settings</strong>, click <strong>Edit</strong> and set <code>Ignore Ansible Galaxy SSL Certificate Verification</code> to <strong>On</strong></li>
 </ul>
 </li>
 </ul>
-<h3 id="add-content-to-your-empty-pah">Add content to your (empty) PAH</h3>
+</li>
+</ul>
+<p>The last thing you have to setup is to configure the Organization (<code>default</code> here) to use the PAH credentials and the order it searches them:</p>
+<ul>
+<li>Go to <strong>Access-&gt;Organizations</strong>, choose the <code>default</code> Organization and click <strong>Edit</strong></li>
+<li>In <code>Galaxy Credentials</code> remove <code>Ansible Galaxy</code> and add our three PAH credentials</li>
+<li>Note how you could change the order here</li>
+<li>Click <strong>Save</strong></li>
+</ul>
+<h3 id="add-content-to-your-private-automation-hub">Add content to your <strong>Private Automation Hub</strong></h3>
 <p>Most of this is well documented <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html-single/managing_red_hat_certified_and_ansible_galaxy_collections_in_automation_hub/index">here</a></p>
 <p>Sync collections from Red Hat Automation Hub</p>
 <ul>
@@ -616,6 +629,33 @@
 <li>In the <strong>Remote</strong> overview tab click <strong>Sync</strong> for the <code>community</code> remote</li>
 </ul>
 <p>Verify the sync of the collections in <strong>Collections-&gt;Collections</strong>, switch the repositories with the dropdown at the top. There should be a lot of content in the <code>Red Hat Certified</code> repo and one collection in the <code>Community</code> repo.</p>
+<h3 id="test-private-automation-hub-integration">Test <strong>Private Automation Hub</strong> Integration</h3>
+<p>Now check that your Automation Controller can actually use the content from your PAH:</p>
+<ul>
+<li>Create a new <strong>Project</strong> pointing here: <code>https://github.com/ansible-learnfest/playbooks-example.git</code>
+<ul>
+<li>Have a look at the content, esp the <code>collections/requirements.yml</code> file</li>
+</ul>
+</li>
+<li>Create a new <strong>Template</strong>:
+<ul>
+<li><strong>Name</strong>: up to you</li>
+<li><strong>Inventory</strong>: The one you set up with the Playbook before, it should contain one of your AWS instances</li>
+<li><strong>Project</strong>: The one you just created</li>
+<li><strong>Execution Environment</strong>: <code>Ansible Engine 2.9 execution environment</code></li>
+<li><strong>Playbook</strong>: <code>install-php.yml</code></li>
+<li>Check <strong>Privilege Escalation</strong></li>
+</ul>
+</li>
+<li>Launch the <strong>Template</strong>, if all was configured correctly it should install PHP modules on the managed node.</li>
+</ul>
+<p>So recap what happened:</p>
+<ul>
+<li>You created a <strong>Template</strong> that runs a Playbook that has a requirement on a certain Collection which is not part of the Execution Environments included in Controller.</li>
+<li>Your <strong>Organization</strong> (<code>default</code>) is configured in a way it can only download Collections from your Private Automation Hub</li>
+<li>The Collection did exist on your PAH</li>
+<li><strong>Important</strong>: As this collection is not part of the Execution Environment the Playbook run in, how did it work? In this case is it was dynamically &ldquo;added&rdquo; to the Execution Environment at runtime.</li>
+</ul>
 <p><strong>Goal</strong></p>
 <p><strong>Tips</strong></p>
 
@@ -898,19 +938,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1656679368"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1656679368"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1656679368"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1656679368"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1656679368"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1656679368"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1656941713"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1656679368"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1656679368"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1656679368"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1656941713"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1656679368"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1656941713"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
