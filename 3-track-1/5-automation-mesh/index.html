@@ -12,22 +12,22 @@
     <title>Extend Automation Mesh :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1656941713" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1656941713" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1656941713" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1656941713" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1656941713" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1656941713" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1656941713" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1656941713" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1656941713" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1657029588" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1657029588" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1657029588" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1657029588" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1657029588" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1657029588" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1657029588" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1657029588" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1657029588" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1657029588" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1656941713" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1657029588" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1657029588"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1656941713"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1656941713"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1657029588"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1657029588"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1656941713"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1657029588"></script>
 
     
   </div>
@@ -514,7 +514,12 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#task-5-extend-automation-mesh">Task 5: Extend Automation Mesh</a></li>
+    <li><a href="#task-5-extend-automation-mesh">Task 5: Extend Automation Mesh</a>
+      <ul>
+        <li><a href="#install-execution-node">Install Execution Node</a></li>
+        <li><a href="#use-the-execution-node">Use the Execution Node</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -541,14 +546,55 @@
 
 
 	<h2 id="task-5-extend-automation-mesh">Task 5: Extend Automation Mesh</h2>
+<p>Even an all-in-one Automation Controller installation contains an Automation Mesh, in this case it&rsquo;s living on the Controller node itself. In this case the node type is called &ldquo;hybrid&rdquo;.</p>
+<p>Go and check this on your Controller under <strong>Topology View</strong>. This section is about extending the Automation Mesh with a second Execution Node.</p>
 <p><strong>Prerequisites</strong></p>
 <ul>
 <li>Automation Controller is running &amp; accessible</li>
-<li>You can run <code>ansible-navigator</code> on a laptop/VM.</li>
+<li>You have run example Ansible content against an managed node</li>
 </ul>
 <p><strong>Tasks</strong></p>
+<h3 id="install-execution-node">Install Execution Node</h3>
+<ul>
+<li>You need to enable the AAP installer on your Controller node to connect to one of your AWS instances via SSH. This means either
+<ul>
+<li>to copy the private key you are using to connect to your instances to the Controller instance</li>
+<li>or to create a new SSH key on the Controller and copy the public key to the <code>authorized_keys</code> file on the machine you want to use as Execution Node.</li>
+</ul>
+</li>
+<li>For the fun of it you need to do a small AWS exercise: Open port <code>27199</code> on your Controller and your Execution Node by adding it to their respective <strong>Security Groups</strong> in the AWS Console
+<ul>
+<li>This is the <code>receptor</code> port Automation Mesh is communicating on and not open on the default AWS instance deployments.</li>
+</ul>
+</li>
+<li>To install the Execution Node, edit the inventory file on your Controller by adding these lines:</li>
+</ul>
+<pre><code>[automationcontroller:vars]
+peers=execution_nodes
+
+[execution_nodes]
+&lt;execution node&gt; ansible_user=ec2-user ansible_become=yes
+</code></pre><ul>
+<li>Run the installer, wait for successful completion</li>
+</ul>
+<h3 id="use-the-execution-node">Use the Execution Node</h3>
+<p>Right now you have to execution nodes, one is the Controller as hybrid node, the other is the new Execution Node. Now use the node by configuring Controller in a way it executes jobs for your managed node on the new Execution Node.</p>
+<ul>
+<li>Add a new <strong>Instance Group</strong></li>
+<li>Add the Execution Node to the <strong>Instance Node</strong></li>
+<li>You can configure on <strong>Organization, Project and Template</strong> level to use a specific Execution Node. Do this for the <strong>Template</strong> installing PHP.</li>
+<li>Launch the <strong>Template</strong> and make sure it run on the Execution Node.</li>
+</ul>
 <p><strong>Goal</strong></p>
+<ul>
+<li>The installer installs the execution node without errors</li>
+<li>The new node appears in the Controller web UI under <strong>Topology View</strong>, you should now have one Hybrid Node and one Execution Node.</li>
+<li>You can launch a <strong>Template</strong> using the Execution Node to run it.</li>
+</ul>
 <p><strong>Tips</strong></p>
+<ul>
+<li>The Automation Mesh documentation is <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html-single/red_hat_ansible_automation_platform_automation_mesh_guide/">here</a></li>
+</ul>
 
 
 
@@ -829,19 +875,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1656941713"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1656941713"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1656941713"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1656941713"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1656941713"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1657029589"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1657029589"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1657029589"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1657029589"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1657029589"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1657029589"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1656941713"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1656941713"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1656941713"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1657029589"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1657029589"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1657029589"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1656941713"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1657029589"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
