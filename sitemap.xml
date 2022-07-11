@@ -35,11 +35,19 @@
   </url>
   
   <url>
+    <loc>https://ansible-learnfest.github.io/3-track-1/6-aap2-fullstack/</loc>
+  </url>
+  
+  <url>
     <loc>https://ansible-learnfest.github.io/4-track-2/</loc>
   </url>
   
   <url>
     <loc>https://ansible-learnfest.github.io/4-track-2/1-vscode/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/3-track-1/7-bonus-using-catalog/</loc>
   </url>
   
   <url>

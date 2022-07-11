@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AAP 2 Full Stack Installation on Ansible LearnFest</title>
+    <link>https://ansible-learnfest.github.io/3-track-1/6-aap2-fullstack/</link>
+    <description>Recent content in AAP 2 Full Stack Installation on Ansible LearnFest</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://ansible-learnfest.github.io/3-track-1/6-aap2-fullstack/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Using Private Automation Hub :: Ansible LearnFest</title>
+    <title>Bonus Track: Automation Catalog :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1657554803" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/3-track-1/4-use-pah/">
+  <body class="" data-url="/3-track-1/7-bonus-using-catalog/">
     <nav id="sidebar" class="">
 
 
@@ -251,7 +251,7 @@
     
     <li data-nav-id="/3-track-1/4-use-pah/" title="Using Private Automation Hub" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/3-track-1/4-use-pah/">
@@ -329,7 +329,7 @@
     
     <li data-nav-id="/3-track-1/7-bonus-using-catalog/" title="Bonus Track: Automation Catalog" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/3-track-1/7-bonus-using-catalog/">
@@ -551,7 +551,7 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/3-track-1/'>Track 1: AAP Administrator</a> > Using Private Automation Hub
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/3-track-1/'>Track 1: AAP Administrator</a> > Bonus Track: Automation Catalog
           
         
           
@@ -566,13 +566,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#task-4-using-private-automation-hub">Task 4: Using Private Automation Hub</a>
-      <ul>
-        <li><a href="#integrate-private-automation-hub-into-automation-controller">Integrate <strong>Private Automation Hub</strong> into Automation Controller</a></li>
-        <li><a href="#add-content-to-your-private-automation-hub">Add content to your <strong>Private Automation Hub</strong></a></li>
-        <li><a href="#test-private-automation-hub-integration">Test <strong>Private Automation Hub</strong> Integration</a></li>
-      </ul>
-    </li>
+    <li><a href="#bonus-track-using-automation-services-catalog">Bonus Track: Using Automation Services Catalog</a></li>
   </ul>
 </nav>
     </div>
@@ -590,7 +584,7 @@
           
             <h1>
               
-              Using Private Automation Hub
+              Bonus Track: Automation Catalog
             </h1>
           
 
@@ -598,117 +592,51 @@
 
 
 
-	<h2 id="task-4-using-private-automation-hub">Task 4: Using Private Automation Hub</h2>
+	<h2 id="bonus-track-using-automation-services-catalog">Bonus Track: Using Automation Services Catalog</h2>
+<p>With a full-stack AAP 2.2 setup running along, you could start playing around with the brand new <strong>Automation Services Catalog</strong>. This is the new self-service portal replacing the hosted offering (and somehow one functionality of dear, old CloudForms).</p>
+<p>Catalog depends on RH SSO for Authentication, for PAH and Controller this is optional.</p>
+
+<div class="notices warning" ><p>Remember it&rsquo;s early days; Catalog is in Tech Preview!</p>
+</div>
+
 <p><strong>Prerequisites</strong></p>
 <ul>
-<li>Automation Controller is running &amp; accessible</li>
-<li>Private Automation Hub is running &amp; accessible</li>
+<li>A full AAP 2.2 installation (Controller, PAH, Catalog, RH SSO)</li>
+<li>Access to all web UIs</li>
 </ul>
 <p><strong>Tasks</strong></p>
 <ul>
-<li>Configure Automation Controller to access your Private Automation Hub</li>
-<li>Add collections from Red Hat Automation Hub, Galaxy and custom ones created by you.</li>
-<li>Add Excution Environment images</li>
+<li>Create a Catalog user in RH SSO Admin UI (<code>https://&lt;instance&gt;:8443</code>):
+<ul>
+<li><strong>Manage</strong> -&gt; <strong>Users</strong> -&gt; <strong>View all users</strong></li>
+<li>Create user <strong>catalog-admin</strong></li>
+<li><strong>Save</strong></li>
+<li>Set a password in <strong>Credentials</strong></li>
+<li>In <strong>Role Mappings</strong> for this user: In <strong>Client Roles</strong> choose <code>automation-catalog</code></li>
+<li>Add role <code>catalog-admin</code></li>
 </ul>
-
-<div class="notices tip" ><p>Important: You only have to do this because we didn&rsquo;t have installer install Controller and PAH in one go. Then the integration would have been configured for you already. For the sake of understanding we decided to let you do this manually. Note: The Execution Environemnt images coming with the bundle installer have been pushed to the PAH registry already.</p>
-</div>
-
-<p>Let&rsquo;s start, as the docs for this are distributed over some places we&rsquo;ll give some more instructions.</p>
-<h3 id="integrate-private-automation-hub-into-automation-controller">Integrate <strong>Private Automation Hub</strong> into Automation Controller</h3>
+</li>
+<li>Start with Automation Services Catalog
 <ul>
-<li>In you PAH go to <strong>Collections-&gt;API token management</strong>, hit <strong>Load Token</strong> and copy the token. Put it somewhere, the token will change every time you have to get it this way again!</li>
-<li>In Controller, go to <strong>Resources-&gt;Credentials</strong> and <strong>Add</strong> three new credentials:
-<ul>
-<li>Name them <strong>PAH community</strong>, <strong>PAH certified</strong> and <strong>Pah published</strong></li>
-<li>All belong to the <strong>Organisation</strong> <code>default</code></li>
-<li>Credential Type is <strong>Ansible Galaxy/Automation Hub API Token</strong></li>
-<li>Look up the <strong>Galaxy Server URL</strong> for each in PAH: In <strong>Collections-&gt;Repository Management</strong> lookup the <strong>Repo URL</strong> for <strong>community</strong>, <strong>published</strong> and <strong>rh-certified</strong> and put them in respectively.</li>
-<li>You have created the API token already, paste in into the credentials</li>
-<li>As your PAH is using a self-signed certificate, disable the certificate verification:
-<ul>
-<li>Go to <strong>Settings-&gt;Jobs Settings</strong>, click <strong>Edit</strong> and set <code>Ignore Ansible Galaxy SSL Certificate Verification</code> to <strong>On</strong></li>
+<li>Log in with the new user</li>
+<li>Check under <strong>Platforms</strong> <strong>Automation Controller</strong> status is <code>Available</code>, click the circular <code>Refresh</code> icon.</li>
+<li>Create a new <strong>Portfolio</strong> and access it</li>
+<li>To add a create a new <strong>Product</strong>, click <strong>Add</strong> and set <strong>Filter by Platform</strong> to <code>Automation Controller</code></li>
+<li>Check the <code>Demo Job Template</code> tile and click <strong>Add</strong></li>
+<li>Now you can order the Product, try it and check the Job is run in Controller.</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<p>The last thing you have to setup is to configure the Organization (<code>default</code> here) to use the PAH credentials and the order it searches them:</p>
+<p><strong>Play from here on</strong></p>
 <ul>
-<li>Go to <strong>Access-&gt;Organizations</strong>, choose the <code>default</code> Organization and click <strong>Edit</strong></li>
-<li>In <code>Galaxy Credentials</code> remove <code>Ansible Galaxy</code> and add our three PAH credentials</li>
-<li>Note how you could change the order here</li>
-<li>Click <strong>Save</strong></li>
-</ul>
-<h3 id="add-content-to-your-private-automation-hub">Add content to your <strong>Private Automation Hub</strong></h3>
-<p>Most of this is well documented <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html-single/managing_red_hat_certified_and_ansible_galaxy_collections_in_automation_hub/index">here</a></p>
-<p>Sync collections from Red Hat Automation Hub</p>
-<ul>
-<li>Go to <code>console.redhat.com</code> and open <strong>Ansible Automation Platform-&gt;Automation Hub-&gt;Collections</strong>. Here you <strong>could enable/disable the sync of certain collections but there is a bug as of now!</strong> We&rsquo;ll give you a working URL to sync all content as a workaround.</li>
-<li>What you need to do is to get the autentication token and configure it in your PAH:
-<ul>
-<li>In Red Hat Automation Hub Go to <strong>Connect to Hub</strong> and copy the <strong>Offline Token</strong></li>
-<li>In PAH go to <strong>Collections-&gt;Repository management-&gt;Remote</strong></li>
-<li>Edit the <code>rh-certified</code> remote:
-<ul>
-<li><strong>URL</strong> `<a href="https://console.redhat.com/api/automation-hub/content/published/">https://console.redhat.com/api/automation-hub/content/published/</a></li>
-<li><strong>Token</strong> the token you copied from RH AH</li>
-<li>Click <strong>Save</strong> and then hit <strong>Sync</strong>. This will sync all collections from Red Hat Automation Hub to your Private Automation Hub.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Sync selected comunity collections from Ansible Galaxy</p>
-<ul>
-<li>Galaxy is configured as the remote <code>community</code> out of the box</li>
-<li>To sync collections:
-<ul>
-<li>Create a regular requirements.yml file pointing to the collection you want, we&rsquo;ll use the one from the docs:</li>
-</ul>
-</li>
-</ul>
-<pre><code>collections:
-  # Install a collection from Ansible Galaxy.
-  - name: geerlingguy.php_roles
-    version: 0.9.3
-    source: https://galaxy.ansible.com
-</code></pre><ul>
-<li>Go to Repo Management, click the <strong>Remote</strong> tab again</li>
-<li>Edit the <code>community</code> remote</li>
-<li>In <strong>YAML requirements</strong> upload the  <code>requirements.yml</code> file from your local machine.</li>
-<li>Click <strong>Save</strong></li>
-<li>In the <strong>Remote</strong> overview tab click <strong>Sync</strong> for the <code>community</code> remote</li>
-</ul>
-<p>Verify the sync of the collections in <strong>Collections-&gt;Collections</strong>, switch the repositories with the dropdown at the top. There should be a lot of content in the <code>Red Hat Certified</code> repo and one collection in the <code>Community</code> repo.</p>
-<h3 id="test-private-automation-hub-integration">Test <strong>Private Automation Hub</strong> Integration</h3>
-<p>Now check that your Automation Controller can actually use the content from your PAH:</p>
-<ul>
-<li>Create a new <strong>Project</strong> pointing here: <code>https://github.com/ansible-learnfest/playbooks-example.git</code>
-<ul>
-<li>Have a look at the content, esp the <code>collections/requirements.yml</code> file</li>
-</ul>
-</li>
-<li>Create a new <strong>Template</strong>:
-<ul>
-<li><strong>Name</strong>: up to you</li>
-<li><strong>Inventory</strong>: The one you set up with the Playbook before, it should contain one of your AWS instances</li>
-<li><strong>Project</strong>: The one you just created</li>
-<li><strong>Execution Environment</strong>: <code>Ansible Engine 2.9 execution environment</code></li>
-<li><strong>Playbook</strong>: <code>install-php.yml</code></li>
-<li>Check <strong>Privilege Escalation</strong></li>
-</ul>
-</li>
-<li>Launch the <strong>Template</strong>, if all was configured correctly it should install PHP modules on the managed node.</li>
-</ul>
-<p>So recap what happened:</p>
-<ul>
-<li>You created a <strong>Template</strong> that runs a Playbook that has a requirement on a certain Collection which is not part of the Execution Environments included in Controller.</li>
-<li>Your <strong>Organization</strong> (<code>default</code>) is configured in a way it can only download Collections from your Private Automation Hub</li>
-<li>The Collection did exist on your PAH</li>
-<li><strong>Important</strong>: As this collection is not part of the Execution Environment the Playbook run in, how did it work? In this case is it was dynamically &ldquo;added&rdquo; to the Execution Environment at runtime.</li>
+<li>If you want to use PAH within an SSO-enabled setup, it now needs an SSO user, too. Create one or give the <code>hubadmin</code> role to your <code>catalog-user</code>.</li>
+<li>Set an approval for a <strong>Product</strong>, you need a user with SSO approver role.</li>
+<li>Create a <strong>Template</strong> with a <strong>Survey</strong> in Controller and use this in a new <strong>Product</strong> in Catalog.</li>
 </ul>
 <p><strong>Goal</strong></p>
+<ul>
+<li>See what Catalog can do right now&hellip; :-)</li>
+</ul>
 <p><strong>Tips</strong></p>
 
 
@@ -852,26 +780,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
                 
                 
 
@@ -915,6 +823,23 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -922,6 +847,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1009,10 +937,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/3-track-1/3-install-pah/" title="Install Private Automation Hub"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/3-track-1/6-aap2-fullstack/" title="AAP 2 Full Stack Installation"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/3-track-1/5-automation-mesh/" title="Extend Automation Mesh" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/4-track-2/" title="Track 2: Automation Content Developer" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
