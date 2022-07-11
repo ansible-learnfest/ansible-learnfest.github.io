@@ -12,22 +12,22 @@
     <title>Using Private Automation Hub :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1657554803" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1657554803" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1657554803" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1657554803" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1657554803" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1657554803" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1657554803" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1657554803" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1657554803" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1657554803" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1657555823" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1657555823" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1657555823" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1657555823" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1657555823" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1657555823" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1657555823" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1657555823" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1657555823" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1657555823" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1657554803" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1657555823" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1657554803"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1657555823"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1657554803"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1657554803"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1657555823"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1657555823"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1657554803"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1657555823"></script>
 
     
   </div>
@@ -642,7 +642,7 @@
 </ul>
 <h3 id="add-content-to-your-private-automation-hub">Add content to your <strong>Private Automation Hub</strong></h3>
 <p>Most of this is well documented <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html-single/managing_red_hat_certified_and_ansible_galaxy_collections_in_automation_hub/index">here</a></p>
-<p>Sync collections from Red Hat Automation Hub</p>
+<h4 id="sync-collections-from-red-hat-automation-hub">Sync collections from Red Hat Automation Hub</h4>
 <ul>
 <li>Go to <code>console.redhat.com</code> and open <strong>Ansible Automation Platform-&gt;Automation Hub-&gt;Collections</strong>. Here you <strong>could enable/disable the sync of certain collections but there is a bug as of now!</strong> We&rsquo;ll give you a working URL to sync all content as a workaround.</li>
 <li>What you need to do is to get the autentication token and configure it in your PAH:
@@ -659,7 +659,7 @@
 </ul>
 </li>
 </ul>
-<p>Sync selected comunity collections from Ansible Galaxy</p>
+<h4 id="sync-selected-comunity-collections-from-ansible-galaxy">Sync selected comunity collections from Ansible Galaxy</h4>
 <ul>
 <li>Galaxy is configured as the remote <code>community</code> out of the box</li>
 <li>To sync collections:
@@ -681,6 +681,12 @@
 <li>In the <strong>Remote</strong> overview tab click <strong>Sync</strong> for the <code>community</code> remote</li>
 </ul>
 <p>Verify the sync of the collections in <strong>Collections-&gt;Collections</strong>, switch the repositories with the dropdown at the top. There should be a lot of content in the <code>Red Hat Certified</code> repo and one collection in the <code>Community</code> repo.</p>
+<h4 id="push-images-to-pah-registry">Push Images to PAH Registry</h4>
+<ul>
+<li>As test push a local image to PAH</li>
+<li>Example: <code>podman push --tls-verify=false quay.io/redhat_emp1/ee-ansible-ssa &lt;PAH-HOST&gt;/ee-ansible-ssa</code></li>
+<li>Check in PAH under <strong>Execution Environments</strong></li>
+</ul>
 <h3 id="test-private-automation-hub-integration">Test <strong>Private Automation Hub</strong> Integration</h3>
 <p>Now check that your Automation Controller can actually use the content from your PAH:</p>
 <ul>
@@ -1022,19 +1028,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1657554803"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1657554803"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1657554803"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1657554803"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1657554803"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1657554803"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1657555823"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1657555823"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1657555823"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1657555823"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1657555823"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1657555823"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1657554803"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1657554803"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1657554803"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1657555823"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1657555823"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1657555823"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1657554803"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1657555823"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
