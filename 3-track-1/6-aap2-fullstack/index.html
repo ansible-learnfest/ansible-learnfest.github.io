@@ -12,22 +12,22 @@
     <title>AAP 2 Full Stack Installation :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1657653005" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1657653005" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1657653005" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1657653005" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1657653005" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1657653005" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1657653005" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1657653005" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1657653005" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1657653005" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1657699068" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1657699068" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1657699068" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1657699068" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1657699068" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1657699068" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1657699068" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1657699068" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1657699068" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1657699068" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1657653005" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1657699068" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1657653005"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1657699068"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1657653005"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1657653005"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1657699068"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1657699068"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1657653005"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1657699068"></script>
 
     
   </div>
@@ -657,14 +657,36 @@ host_key_checking = False
 <li>Run the installer</li>
 <li>Get a coffee. Or two.</li>
 </ul>
+<p>After the installation has finished, <strong>Private Automation Hub</strong> and <strong>Automation Services Catalog</strong> are configured for SSO. So to be able to login to the UIs, you have to configure a user with the proper roles in <strong>RH SSO</strong>.</p>
+<ul>
+<li>Create an admin user for PAH and catalog in the RH SSO Admin UI (<code>https://&lt;instance&gt;:8443</code>):
+<ul>
+<li><strong>Manage</strong> -&gt; <strong>Users</strong> -&gt; <strong>View all users</strong></li>
+<li>Create user <strong>aapadmin</strong></li>
+<li><strong>Save</strong></li>
+<li>Set a password in <strong>Credentials</strong></li>
+<li>In <strong>Role Mappings</strong> for this user: In <strong>Client Roles</strong> choose <code>automation-catalog</code>
+<ul>
+<li>Add role <code>catalog-admin</code></li>
+</ul>
+</li>
+<li>For <strong>Client Role</strong> <code>automation-hub</code>
+<ul>
+<li>Add role <code>hubadmin</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Now you have a user with admin permissions for PAH and Catalog.</p>
 <p><strong>Goal</strong></p>
 <ul>
 <li>Access to the web UIs on all four instances:
 <ul>
-<li>Automation Controller</li>
-<li>Private Automation Hub</li>
-<li>Automation Services Catalog</li>
-<li>RH SSO Admin UI (Port 8443)</li>
+<li>Automation Controller (user <code>admin</code>, password as set in inventory)</li>
+<li>Private Automation Hub (SSO user)</li>
+<li>Automation Services Catalog (sso user)</li>
+<li>RH SSO Admin UI (Port 8443, user <code>admin</code>, password as set in inventory)</li>
 </ul>
 </li>
 </ul>
@@ -1033,19 +1055,19 @@ sso_console_admin_password='&lt;password&gt;'
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1657653005"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1657653005"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1657653005"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1657653005"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1657653005"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1657653005"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1657699068"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1657699068"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1657699068"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1657699068"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1657699068"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1657699068"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1657653005"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1657653005"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1657653005"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1657699068"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1657699068"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1657699068"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1657653005"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1657699068"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
