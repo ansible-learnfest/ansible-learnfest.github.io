@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Ansible LearnFest</title>
+    <title>Bonus Track: Automation Catalog :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670404069" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/1-intro/">
+  <body class="" data-url="/archive/version-0.1/3-track-1/7-bonus-using-catalog/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/1-intro/" title="Introduction" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/1-intro/">
@@ -263,7 +263,7 @@
   
     
     <li data-nav-id="/archive/" title="Archive" class="dd-item
-        
+        parent
         
         
         ">
@@ -292,7 +292,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/" title="Version 0.1" class="dd-item
-        
+        parent
         
         
         ">
@@ -373,7 +373,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/3-track-1/" title="Track 1: AAP Administrator" class="dd-item
-        
+        parent
         
         
         ">
@@ -559,7 +559,7 @@
     
     <li data-nav-id="/archive/version-0.1/3-track-1/7-bonus-using-catalog/" title="Bonus Track: Automation Catalog" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/7-bonus-using-catalog/">
@@ -797,7 +797,25 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Introduction
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/archive/'>Archive</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/'>Version 0.1</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/'>Track 1: AAP Administrator</a> > Bonus Track: Automation Catalog
+          
+        
+          
+        
+          
+        
           
         
           
@@ -810,7 +828,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#bonus-track-using-automation-services-catalog">Bonus Track: Using Automation Services Catalog</a></li>
   </ul>
 </nav>
     </div>
@@ -828,7 +846,7 @@
           
             <h1>
               
-              Introduction
+              Bonus Track: Automation Catalog
             </h1>
           
 
@@ -836,28 +854,42 @@
 
 
 
-	<h2 id="introduction">Introduction</h2>
-<p>The goal of this LearnFest is to teach you how to use execution environments with <code>ansible-builder</code>, <code>ansible-runner</code> and the Red Hat Ansible Automation Platform 2.</p>
-<ol>
-<li>
-<p>Setup environment</p>
+	<h2 id="bonus-track-using-automation-services-catalog">Bonus Track: Using Automation Services Catalog</h2>
+<p>With a full-stack AAP 2.2 setup running along, you could start playing around with the brand new <strong>Automation Services Catalog</strong>. This is the new self-service portal replacing the hosted offering (and somehow one functionality of dear, old CloudForms).</p>
+<p>Catalog depends on RH SSO for Authentication, for PAH and Controller this is optional.</p>
+
+<div class="notices warning" ><p>Remember it&rsquo;s early days; Catalog is in Tech Preview!</p>
+</div>
+
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>A full AAP 2.2 installation (Controller, PAH, Catalog, RH SSO)</li>
+<li>Access to all web UIs</li>
+</ul>
+<p><strong>Tasks</strong></p>
+<ul>
+<li>Start with Automation Services Catalog
+<ul>
+<li>Log in with the new user</li>
+<li>Check under <strong>Platforms</strong> <strong>Automation Controller</strong> status is <code>Available</code>, click the circular <code>Refresh</code> icon.</li>
+<li>Create a new <strong>Portfolio</strong> and access it</li>
+<li>To add a create a new <strong>Product</strong>, click <strong>Add</strong> and set <strong>Filter by Platform</strong> to <code>Automation Controller</code></li>
+<li>Check the <code>Demo Job Template</code> tile and click <strong>Add</strong></li>
+<li>Now you can order the Product, try it and check the Job is run in Controller.</li>
+</ul>
 </li>
-<li>
-<p>Get familiar with Visual Studio Code&rsquo;s Ansible extension</p>
-</li>
-<li>
-<p>Setup private automation hub</p>
-</li>
-<li>
-<p>Build the execution environment</p>
-</li>
-<li>
-<p>Use the execution environment with <code>ansible-navigator</code></p>
-</li>
-<li>
-<p>Use the execution environment with automation controller</p>
-</li>
-</ol>
+</ul>
+<p><strong>Play from here on</strong></p>
+<ul>
+<li>If you want to use PAH within an SSO-enabled setup, it now needs an SSO user, too. Create one or give the <code>hubadmin</code> role to your <code>catalog-user</code>.</li>
+<li>Set an approval for a <strong>Product</strong>, you need a user with SSO approver role.</li>
+<li>Create a <strong>Template</strong> with a <strong>Survey</strong> in Controller and use this in a new <strong>Product</strong> in Catalog.</li>
+</ul>
+<p><strong>Goal</strong></p>
+<ul>
+<li>See what Catalog can do right now&hellip; :-)</li>
+</ul>
+<p><strong>Tips</strong></p>
 
 
 
@@ -898,198 +930,8 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1198,6 +1040,54 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
                     
@@ -1205,6 +1095,160 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1298,10 +1342,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/6-aap2-fullstack/" title="AAP 2 Full Stack Installation"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/10-prepare-environment/" title="Prepare Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/" title="Track 2: Automation Content Developer" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

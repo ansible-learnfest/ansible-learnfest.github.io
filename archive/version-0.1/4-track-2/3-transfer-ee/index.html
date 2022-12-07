@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Ansible LearnFest</title>
+    <title>Transfer Execution Environment :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670404069" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/1-intro/">
+  <body class="" data-url="/archive/version-0.1/4-track-2/3-transfer-ee/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/1-intro/" title="Introduction" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/1-intro/">
@@ -263,7 +263,7 @@
   
     
     <li data-nav-id="/archive/" title="Archive" class="dd-item
-        
+        parent
         
         
         ">
@@ -292,7 +292,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/" title="Version 0.1" class="dd-item
-        
+        parent
         
         
         ">
@@ -593,7 +593,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/4-track-2/" title="Track 2: Automation Content Developer" class="dd-item
-        
+        parent
         
         
         ">
@@ -675,7 +675,7 @@
     
     <li data-nav-id="/archive/version-0.1/4-track-2/3-transfer-ee/" title="Transfer Execution Environment" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/3-transfer-ee/">
@@ -797,7 +797,25 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Introduction
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/archive/'>Archive</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/'>Version 0.1</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/'>Track 2: Automation Content Developer</a> > Transfer Execution Environment
+          
+        
+          
+        
+          
+        
           
         
           
@@ -810,7 +828,14 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#task-3-transfer-your-ee">Task 3: Transfer your EE</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#tasks">Tasks</a></li>
+        <li><a href="#goal">Goal</a></li>
+        <li><a href="#tips">Tips</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -828,7 +853,7 @@
           
             <h1>
               
-              Introduction
+              Transfer Execution Environment
             </h1>
           
 
@@ -836,28 +861,29 @@
 
 
 
-	<h2 id="introduction">Introduction</h2>
-<p>The goal of this LearnFest is to teach you how to use execution environments with <code>ansible-builder</code>, <code>ansible-runner</code> and the Red Hat Ansible Automation Platform 2.</p>
-<ol>
-<li>
-<p>Setup environment</p>
-</li>
-<li>
-<p>Get familiar with Visual Studio Code&rsquo;s Ansible extension</p>
-</li>
-<li>
-<p>Setup private automation hub</p>
-</li>
-<li>
-<p>Build the execution environment</p>
-</li>
-<li>
-<p>Use the execution environment with <code>ansible-navigator</code></p>
-</li>
-<li>
-<p>Use the execution environment with automation controller</p>
-</li>
-</ol>
+	<h2 id="task-3-transfer-your-ee">Task 3: Transfer your EE</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>a working execution environment</li>
+<li>private automation hub to store your EE</li>
+</ul>
+<h3 id="tasks">Tasks</h3>
+<ul>
+<li>Publish your EE to your private automation hub</li>
+<li>Add additional tags or labels and push them to the registry</li>
+<li>Experiment with other registries, e.g. Quay (make sure to either delete your EE after you&rsquo;re done or make sure it’s not publicly accessible since the EE supported requires a subscription!)</li>
+<li>Delete old versions of the EE</li>
+</ul>
+<h3 id="goal">Goal</h3>
+<ul>
+<li>Publish an EE in your own registry</li>
+<li>Get familiar with basic EE management tasks</li>
+</ul>
+<h3 id="tips">Tips</h3>
+<ul>
+<li><a href="https://github.com/containers/skopeo">Skopeo documentation</a></li>
+<li><a href="https://docs.podman.io/en/latest/">Podman documentation</a></li>
+</ul>
 
 
 
@@ -898,198 +924,8 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1198,6 +1034,70 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
                     
@@ -1268,6 +1168,144 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1298,10 +1336,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/2-build-ee/" title="Build an execution environment"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/10-prepare-environment/" title="Prepare Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/4-use-ee/" title="Using Private Automation Hub" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

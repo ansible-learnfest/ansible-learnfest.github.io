@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Ansible LearnFest</title>
+    <title>The VSCode extension :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670404069" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/1-intro/">
+  <body class="" data-url="/20-vscode/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/1-intro/" title="Introduction" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/1-intro/">
@@ -144,7 +144,7 @@
     
     <li data-nav-id="/20-vscode/" title="The VSCode extension" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/20-vscode/">
@@ -797,7 +797,7 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Introduction
+            <a href='https://ansible-learnfest.github.io/'></a> > The VSCode extension
           
         
           
@@ -810,7 +810,15 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#introduction-to-the-vscode-extension">Introduction to the VSCode extension</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#tasks">Tasks</a></li>
+        <li><a href="#goal">Goal</a></li>
+        <li><a href="#tips">Tips</a></li>
+        <li><a href="#challenge-tasks">Challenge Tasks</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -828,7 +836,7 @@
           
             <h1>
               
-              Introduction
+              The VSCode extension
             </h1>
           
 
@@ -836,28 +844,67 @@
 
 
 
-	<h2 id="introduction">Introduction</h2>
-<p>The goal of this LearnFest is to teach you how to use execution environments with <code>ansible-builder</code>, <code>ansible-runner</code> and the Red Hat Ansible Automation Platform 2.</p>
-<ol>
+	<h2 id="introduction-to-the-vscode-extension">Introduction to the VSCode extension</h2>
+<p>We highly recommend making yourself familiar with Visual Studio Code and the Ansible extension. Even if you’re not planning to use it as your daily driver, it is good to know how it works to explain and show the benefit to customers.</p>
+<p>TODO: Check this still works in VSCode Server - it&rsquo;s probably already installed</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
 <li>
-<p>Setup environment</p>
+<p>You should have a Linux workstation setup</p>
 </li>
 <li>
-<p>Get familiar with Visual Studio Code&rsquo;s Ansible extension</p>
+<p>Install <code>ansible</code>, <code>ansible-lint</code> and <code>podman</code> on your Linux workstation</p>
 </li>
 <li>
-<p>Setup private automation hub</p>
+<p>Install <code>ansible-navigator</code> for using execution environments</p>
+</li>
+</ul>
+<h3 id="tasks">Tasks</h3>
+<ul>
+<li>
+<p>Install VSCode <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
 </li>
 <li>
-<p>Build the execution environment</p>
+<p>Install the Ansible extension: <a href="https://marketplace.visualstudio.com/items?itemName=redhat.ansible">https://marketplace.visualstudio.com/items?itemName=redhat.ansible</a></p>
 </li>
 <li>
-<p>Use the execution environment with <code>ansible-navigator</code></p>
+<p>Create a playbook/role/collection</p>
 </li>
 <li>
-<p>Use the execution environment with automation controller</p>
+<p>Get familiar with the VSCode extension features</p>
 </li>
-</ol>
+<li>
+<p>Set <strong>Language Mode</strong> to Ansible</p>
+<p>Either on the VSCode status bar or put this into <code>~/.config/Code/User/settings.json</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;files.associations&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+        <span style="color:#f92672">&#34;*.yml&#34;</span>: <span style="color:#e6db74">&#34;ansible&#34;</span>,
+        <span style="color:#f92672">&#34;*.yaml&#34;</span>: <span style="color:#e6db74">&#34;ansible&#34;</span>
+    }<span style="color:#960050;background-color:#1e0010">,</span>
+</code></pre></div><ul>
+<li>
+<p>tab completion</p>
+</li>
+<li>
+<p>syntax highlighting</p>
+</li>
+<li>
+<p>tool tips for modules: hover over a modul FQCN, <code>Ctrl+Click</code> on a modul FQCN to open documentation</p>
+</li>
+<li>
+<p><code>Ctrl+Space</code> for module parameters, e.g. add a task calling <code>ansible.builtin.yum</code> and use <code>Ctrl+Space</code> to see all module attributes and attribute parameters</p>
+</li>
+<li>
+<p>Make syntax error and notice errors in the Problem pane (<code>Ctrl+Shift+m</code>): you might have to make sure <code>ansible-lint</code> is enabled and notice it is only checking when you save a file</p>
+</li>
+</ul>
+<h3 id="goal">Goal</h3>
+<p>Start VSCode and get familiar with its features.</p>
+<h3 id="tips">Tips</h3>
+<p>Although VSCode of course runs on Linux, Mac and Windows, there are some extra tasks to be done to get Ansible working on Windows. It&rsquo;s beyond the scope of this manual to provide detailed instructions on how to setup Podman and Ansible on Windows.</p>
+<h3 id="challenge-tasks">Challenge Tasks</h3>
+<p>Try to configure VSCode to use Ansible inside an execution environment.</p>
 
 
 
@@ -898,23 +945,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -949,6 +979,26 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1298,10 +1348,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/10-prepare-environment/" title="Prepare Environment"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/10-prepare-environment/" title="Prepare Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/30-use-pah/" title="Using Private Automation Hub" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

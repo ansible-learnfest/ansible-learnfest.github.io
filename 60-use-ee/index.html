@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Ansible LearnFest</title>
+    <title>Use the EE in controller :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670404069" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/1-intro/">
+  <body class="" data-url="/60-use-ee/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/1-intro/" title="Introduction" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/1-intro/">
@@ -240,7 +240,7 @@
     
     <li data-nav-id="/60-use-ee/" title="Use the EE in controller" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/60-use-ee/">
@@ -797,7 +797,7 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Introduction
+            <a href='https://ansible-learnfest.github.io/'></a> > Use the EE in controller
           
         
           
@@ -810,7 +810,17 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#use-the-ee-in-controller">Use the EE in controller</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#tasks">Tasks</a></li>
+        <li><a href="#configure-ee-in-controller">Configure EE in Controller</a></li>
+        <li><a href="#create-project">Create Project</a></li>
+        <li><a href="#challenge-tasks">Challenge tasks</a></li>
+        <li><a href="#goal">Goal</a></li>
+        <li><a href="#tips">Tips</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -828,7 +838,7 @@
           
             <h1>
               
-              Introduction
+              Use the EE in controller
             </h1>
           
 
@@ -836,28 +846,76 @@
 
 
 
-	<h2 id="introduction">Introduction</h2>
-<p>The goal of this LearnFest is to teach you how to use execution environments with <code>ansible-builder</code>, <code>ansible-runner</code> and the Red Hat Ansible Automation Platform 2.</p>
-<ol>
+	<h2 id="use-the-ee-in-controller">Use the EE in controller</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
 <li>
-<p>Setup environment</p>
+<p>Publish an EE to private automation hub</p>
 </li>
 <li>
-<p>Get familiar with Visual Studio Code&rsquo;s Ansible extension</p>
+<p>Configure controller to access the private automation hub and pull the EE</p>
+</li>
+</ul>
+<h3 id="tasks">Tasks</h3>
+<h3 id="configure-ee-in-controller">Configure EE in Controller</h3>
+<ul>
+<li>
+<p>Check the <strong>Credential</strong> Automation Hub Container Registry points to the PAH</p>
 </li>
 <li>
-<p>Setup private automation hub</p>
+<p>Go to <code>Execution Environments</code></p>
 </li>
 <li>
-<p>Build the execution environment</p>
+<p>Configure the new EE</p>
+<ul>
+<li>
+<p><strong>Name</strong>: ee-ansible-demo</p>
 </li>
 <li>
-<p>Use the execution environment with <code>ansible-navigator</code></p>
+<p><strong>Image</strong>: pah.<LABID>.<SUBDOMAIN>.opentlc.com/ee-ansible-demo:latest</p>
 </li>
 <li>
-<p>Use the execution environment with automation controller</p>
+<p><strong>Credential</strong>: Automation Hub Container Registry</p>
 </li>
-</ol>
+</ul>
+</li>
+<li>
+<p>Create registry credentials in controller</p>
+</li>
+<li>
+<p>Create the EE in controller</p>
+</li>
+<li>
+<p>Create a job template using the EE</p>
+</li>
+<li>
+<p>Test a playbook with the collection you added to the EE, e.g. perform an action in Azure</p>
+</li>
+<li>
+<p>There is an example playbook available in the <a href="https://github.com/ansible-learnfest/playbooks-infra">playbook-infra</a> project</p>
+</li>
+</ul>
+<h3 id="create-project">Create Project</h3>
+<ul>
+<li>Create a new Project to point to <a href="https://github.com/ansible-learnfest/ee-flow.git">https://github.com/ansible-learnfest/ee-flow.git</a></li>
+</ul>
+<h3 id="challenge-tasks">Challenge tasks</h3>
+<ul>
+<li>
+<p>Build another EE with different content, import it into Controller and use different job templates with different EE’s</p>
+</li>
+<li>
+<p>Think about version pinning in the EE: what’s the best way to do it? How can you track versioning?</p>
+</li>
+<li>
+<p>If you use GitLab or GitHub have a look at <em>renovate</em> which can help you to track dependencies. <a href="https://docs.renovatebot.com/">https://docs.renovatebot.com/</a></p>
+</li>
+</ul>
+<h3 id="goal">Goal</h3>
+<ul>
+<li>Get familiar with using EE&rsquo;s in controller and different job templates</li>
+</ul>
+<h3 id="tips">Tips</h3>
 
 
 
@@ -898,23 +956,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -1013,6 +1054,26 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1298,10 +1359,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/55-transfer-ee/" title="Transfer Execution Environment"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/10-prepare-environment/" title="Prepare Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/archive/" title="Archive" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

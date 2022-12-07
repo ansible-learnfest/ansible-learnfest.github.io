@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Ansible LearnFest</title>
+    <title>Using Private Automation Hub :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670404069" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/1-intro/">
+  <body class="" data-url="/archive/version-0.1/3-track-1/4-use-pah/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/1-intro/" title="Introduction" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/1-intro/">
@@ -263,7 +263,7 @@
   
     
     <li data-nav-id="/archive/" title="Archive" class="dd-item
-        
+        parent
         
         
         ">
@@ -292,7 +292,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/" title="Version 0.1" class="dd-item
-        
+        parent
         
         
         ">
@@ -373,7 +373,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/3-track-1/" title="Track 1: AAP Administrator" class="dd-item
-        
+        parent
         
         
         ">
@@ -481,7 +481,7 @@
     
     <li data-nav-id="/archive/version-0.1/3-track-1/4-use-pah/" title="Using Private Automation Hub" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/4-use-pah/">
@@ -797,7 +797,25 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Introduction
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/archive/'>Archive</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/'>Version 0.1</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/'>Track 1: AAP Administrator</a> > Using Private Automation Hub
+          
+        
+          
+        
+          
+        
           
         
           
@@ -810,7 +828,13 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#task-4-using-private-automation-hub">Task 4: Using Private Automation Hub</a>
+      <ul>
+        <li><a href="#integrate-private-automation-hub-into-automation-controller">Integrate <strong>Private Automation Hub</strong> into Automation Controller</a></li>
+        <li><a href="#add-content-to-your-private-automation-hub">Add content to your <strong>Private Automation Hub</strong></a></li>
+        <li><a href="#test-private-automation-hub-integration">Test <strong>Private Automation Hub</strong> Integration</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -828,7 +852,7 @@
           
             <h1>
               
-              Introduction
+              Using Private Automation Hub
             </h1>
           
 
@@ -836,28 +860,125 @@
 
 
 
-	<h2 id="introduction">Introduction</h2>
-<p>The goal of this LearnFest is to teach you how to use execution environments with <code>ansible-builder</code>, <code>ansible-runner</code> and the Red Hat Ansible Automation Platform 2.</p>
-<ol>
-<li>
-<p>Setup environment</p>
+	<h2 id="task-4-using-private-automation-hub">Task 4: Using Private Automation Hub</h2>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>Automation Controller is running &amp; accessible</li>
+<li>Private Automation Hub is running &amp; accessible</li>
+</ul>
+<p><strong>Tasks</strong></p>
+<ul>
+<li>Configure Automation Controller to access your Private Automation Hub</li>
+<li>Add collections from Red Hat Automation Hub, Galaxy and custom ones created by you.</li>
+<li>Add Excution Environment images</li>
+</ul>
+
+<div class="notices tip" ><p>Important: You only have to do this because we didn&rsquo;t have installer install Controller and PAH in one go. Then the integration would have been configured for you already. For the sake of understanding we decided to let you do this manually. Note: The Execution Environemnt images coming with the bundle installer have been pushed to the PAH registry already.</p>
+</div>
+
+<p>Let&rsquo;s start, as the docs for this are distributed over some places we&rsquo;ll give some more instructions.</p>
+<h3 id="integrate-private-automation-hub-into-automation-controller">Integrate <strong>Private Automation Hub</strong> into Automation Controller</h3>
+<ul>
+<li>In your PAH go to <strong>Collections-&gt;API token management</strong>, hit <strong>Load Token</strong> and copy the token. Put it somewhere, the token will change every time you have to get it this way!</li>
+<li>In Controller, go to <strong>Resources-&gt;Credentials</strong> and <strong>Add</strong> three new credentials:
+<ul>
+<li>Name them <strong>PAH community</strong>, <strong>PAH certified</strong> and <strong>Pah published</strong></li>
+<li>All belong to the <strong>Organisation</strong> <code>default</code></li>
+<li>Credential Type is <strong>Ansible Galaxy/Automation Hub API Token</strong></li>
+<li>Look up the <strong>Galaxy Server URL</strong> for each in PAH: In <strong>Collections-&gt;Repository Management</strong> lookup the <strong>Repo URL</strong> for <strong>community</strong>, <strong>published</strong> and <strong>rh-certified</strong> and put them in respectively.</li>
+<li>You have created the API token already, paste in into the credentials</li>
+<li>As your PAH is using a self-signed certificate, disable the certificate verification:
+<ul>
+<li>Go to <strong>Settings-&gt;Jobs Settings</strong>, click <strong>Edit</strong> and set <code>Ignore Ansible Galaxy SSL Certificate Verification</code> to <strong>On</strong></li>
+</ul>
 </li>
-<li>
-<p>Get familiar with Visual Studio Code&rsquo;s Ansible extension</p>
+</ul>
 </li>
-<li>
-<p>Setup private automation hub</p>
+</ul>
+<p>The last thing you have to setup is to configure the Organization (<code>default</code> here) to use the PAH credentials and the order it searches them:</p>
+<ul>
+<li>Go to <strong>Access-&gt;Organizations</strong>, choose the <code>default</code> Organization and click <strong>Edit</strong></li>
+<li>In <code>Galaxy Credentials</code> remove <code>Ansible Galaxy</code> and add our three PAH credentials</li>
+<li>Note how you could change the order here</li>
+<li>Click <strong>Save</strong></li>
+</ul>
+<h3 id="add-content-to-your-private-automation-hub">Add content to your <strong>Private Automation Hub</strong></h3>
+<p>Most of this is well documented <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html-single/managing_red_hat_certified_and_ansible_galaxy_collections_in_automation_hub/index">here</a></p>
+<h4 id="sync-collections-from-red-hat-automation-hub">Sync collections from Red Hat Automation Hub</h4>
+<ul>
+<li>Go to <code>console.redhat.com</code> and open <strong>Ansible Automation Platform-&gt;Automation Hub-&gt;Collections</strong>. Here you <strong>could enable/disable the sync of certain collections but there is a bug as of now!</strong> We&rsquo;ll give you a working URL to sync all content as a workaround.</li>
+<li>What you need to do is to get the autentication token and configure it in your PAH:
+<ul>
+<li>In Red Hat Automation Hub Go to <strong>Connect to Hub</strong> and copy the <strong>Offline Token</strong></li>
+<li>In PAH go to <strong>Collections-&gt;Repository management-&gt;Remote</strong></li>
+<li>Edit the <code>rh-certified</code> remote:
+<ul>
+<li><strong>URL</strong> `<a href="https://console.redhat.com/api/automation-hub/content/published/">https://console.redhat.com/api/automation-hub/content/published/</a></li>
+<li><strong>Token</strong> the token you copied from RH AH</li>
+<li>Click <strong>Save</strong> and then hit <strong>Sync</strong>. This will sync all collections from Red Hat Automation Hub to your Private Automation Hub.</li>
+</ul>
 </li>
-<li>
-<p>Build the execution environment</p>
+</ul>
 </li>
-<li>
-<p>Use the execution environment with <code>ansible-navigator</code></p>
+</ul>
+<h4 id="sync-selected-comunity-collections-from-ansible-galaxy">Sync selected comunity collections from Ansible Galaxy</h4>
+<ul>
+<li>Galaxy is configured as the remote <code>community</code> out of the box</li>
+<li>To sync collections:
+<ul>
+<li>Create a regular requirements.yml file pointing to the collection you want, we&rsquo;ll use the one from the docs:</li>
+</ul>
 </li>
-<li>
-<p>Use the execution environment with automation controller</p>
+</ul>
+<pre><code>collections:
+  # Install a collection from Ansible Galaxy.
+  - name: geerlingguy.php_roles
+    version: 0.9.3
+    source: https://galaxy.ansible.com
+</code></pre><ul>
+<li>Go to Repo Management, click the <strong>Remote</strong> tab again</li>
+<li>Edit the <code>community</code> remote</li>
+<li>In <strong>YAML requirements</strong> upload the  <code>requirements.yml</code> file from your local machine.</li>
+<li>Click <strong>Save</strong></li>
+<li>In the <strong>Remote</strong> overview tab click <strong>Sync</strong> for the <code>community</code> remote</li>
+</ul>
+<p>Verify the sync of the collections in <strong>Collections-&gt;Collections</strong>, switch the repositories with the dropdown at the top. There should be a lot of content in the <code>Red Hat Certified</code> repo and one collection in the <code>Community</code> repo.</p>
+<h4 id="push-images-to-pah-registry">Push Images to PAH Registry</h4>
+<ul>
+<li>As test push a local image to PAH</li>
+<li>First login to the PAH registry: <code>podman login --tls-verify=false &lt;PAH-HOST&gt;</code></li>
+<li>Example: <code>podman push --tls-verify=false quay.io/redhat_emp1/ee-ansible-ssa &lt;PAH-HOST&gt;/ee-ansible-ssa</code></li>
+<li>Check in PAH under <strong>Execution Environments</strong></li>
+</ul>
+<h3 id="test-private-automation-hub-integration">Test <strong>Private Automation Hub</strong> Integration</h3>
+<p>Now check that your Automation Controller can actually use the content from your PAH:</p>
+<ul>
+<li>Create a new <strong>Project</strong> pointing here: <code>https://github.com/ansible-learnfest/playbooks-example.git</code>
+<ul>
+<li>Have a look at the content, esp the <code>collections/requirements.yml</code> file</li>
+</ul>
 </li>
-</ol>
+<li>Create a new <strong>Template</strong>:
+<ul>
+<li><strong>Name</strong>: up to you</li>
+<li><strong>Inventory</strong>: The one you set up with the Playbook before, it should contain one of your AWS instances</li>
+<li><strong>Project</strong>: The one you just created</li>
+<li><strong>Execution Environment</strong>: <code>Ansible Engine 2.9 execution environment</code></li>
+<li><strong>Playbook</strong>: <code>install-php.yml</code></li>
+<li>Check <strong>Privilege Escalation</strong></li>
+</ul>
+</li>
+<li>Launch the <strong>Template</strong>, if all was configured correctly it should install PHP modules on the managed node.</li>
+</ul>
+<p>So recap what happened:</p>
+<ul>
+<li>You created a <strong>Template</strong> that runs a Playbook that has a requirement on a certain Collection which is not part of the Execution Environments included in Controller.</li>
+<li>Your <strong>Organization</strong> (<code>default</code>) is configured in a way it can only download Collections from your Private Automation Hub</li>
+<li>The Collection did exist on your PAH</li>
+<li><strong>Important</strong>: As this collection is not part of the Execution Environment the Playbook run in, how did it work? In this case is it was dynamically &ldquo;added&rdquo; to the Execution Environment at runtime.</li>
+</ul>
+<p><strong>Goal</strong></p>
+<p><strong>Tips</strong></p>
 
 
 
@@ -898,23 +1019,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -1019,6 +1123,23 @@
 
                     
                     
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
                         
                     
                     
@@ -1029,6 +1150,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1043,6 +1165,60 @@
             
             
                 
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1081,15 +1257,17 @@
 
                     
                     
-                        
-                    
                     
 
+                    
+            
+        
                     
                         
             
             
                 
+                    
                     
                 
                 
@@ -1107,53 +1285,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1298,10 +1431,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/3-install-pah/" title="Install Private Automation Hub"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/10-prepare-environment/" title="Prepare Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/5-automation-mesh/" title="Extend Automation Mesh" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

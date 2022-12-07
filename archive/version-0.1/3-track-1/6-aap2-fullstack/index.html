@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Ansible LearnFest</title>
+    <title>AAP 2 Full Stack Installation :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670404069" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/1-intro/">
+  <body class="" data-url="/archive/version-0.1/3-track-1/6-aap2-fullstack/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/1-intro/" title="Introduction" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/1-intro/">
@@ -263,7 +263,7 @@
   
     
     <li data-nav-id="/archive/" title="Archive" class="dd-item
-        
+        parent
         
         
         ">
@@ -292,7 +292,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/" title="Version 0.1" class="dd-item
-        
+        parent
         
         
         ">
@@ -373,7 +373,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/3-track-1/" title="Track 1: AAP Administrator" class="dd-item
-        
+        parent
         
         
         ">
@@ -533,7 +533,7 @@
     
     <li data-nav-id="/archive/version-0.1/3-track-1/6-aap2-fullstack/" title="AAP 2 Full Stack Installation" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/6-aap2-fullstack/">
@@ -797,7 +797,25 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Introduction
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/archive/'>Archive</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/'>Version 0.1</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/'>Track 1: AAP Administrator</a> > AAP 2 Full Stack Installation
+          
+        
+          
+        
+          
+        
           
         
           
@@ -810,7 +828,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#task-6-start-over-with-full-stack-installation">Task 6: Start over with Full-Stack Installation</a></li>
   </ul>
 </nav>
     </div>
@@ -828,7 +846,7 @@
           
             <h1>
               
-              Introduction
+              AAP 2 Full Stack Installation
             </h1>
           
 
@@ -836,29 +854,158 @@
 
 
 
-	<h2 id="introduction">Introduction</h2>
-<p>The goal of this LearnFest is to teach you how to use execution environments with <code>ansible-builder</code>, <code>ansible-runner</code> and the Red Hat Ansible Automation Platform 2.</p>
-<ol>
-<li>
-<p>Setup environment</p>
+	<h2 id="task-6-start-over-with-full-stack-installation">Task 6: Start over with Full-Stack Installation</h2>
+<p>Until now you installed and configured an AAP 2.2 environment component by component. In real life you would have the installer deploy all components in one go, so you would get an environment with integrated components consisting of:</p>
+<ul>
+<li>Automation Controller</li>
+<li>Private Automation Hub</li>
+<li>Automation Services Catalog (Tech Preview)</li>
+<li>Red Hat SSO for central authentication (required for Catalog, optional for other components)</li>
+</ul>
+<p>So in this section you&rsquo;ll build the whole thing.</p>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>Delete your AWS environment</li>
+</ul>
+<p><code>ansible-navigator run cloud-infra.yml -m stdout -e remove=true</code></p>
+<ul>
+<li>and start over with new instances:</li>
+</ul>
+<p><code>ansible-navigator run cloud-infra.yml -m stdout</code></p>
+<ul>
+<li>Open the instances security groups so we don&rsquo;t have to tweak filter rules for now. <strong>Disclaimer: Only for lab use, not in real life!</strong></li>
+<li>In the AWS console for each of your instances
+<ul>
+<li>Go to <strong>Instance Details -&gt; Security -&gt; Click &ldquo;Security Group&rdquo;</strong></li>
+<li>Add an inbound rule <strong>All traffic</strong> to <strong>0.0.0.0/0</strong></li>
+<li>Save</li>
+</ul>
 </li>
-<li>
-<p>Get familiar with Visual Studio Code&rsquo;s Ansible extension</p>
+</ul>
+<p><strong>Tasks</strong></p>
+<ul>
+<li>SSH to instance 1, <strong>as root</strong> create a new SSH key pair (<code>ssh-keygen</code>)and add the new public key to the <code>authorized_keys</code> file of <strong>ec2-user</strong> on the other three instances.
+<ul>
+<li>The AAP installer on instance 1 needs to SSH into the other instances!</li>
+</ul>
 </li>
-<li>
-<p>Setup private automation hub</p>
+<li>Download/unpack the <strong>Ansible Automation Platform 2.2.0 Setup Bundle</strong> on instance 1 again.</li>
+<li>Register the SSO host (instance 4) and enable Java repo (yeah, RH SSO is Java-based!)
+<ul>
+<li><code>subscription-manager register</code></li>
+<li><code>subscription-manager repos --enable=jb-eap-7.3-for-rhel-8-x86_64-rpms</code></li>
+</ul>
 </li>
-<li>
-<p>Build the execution environment</p>
+<li>Create an inventory file to configure Installer:
+<ul>
+<li>Use the template below, fill in missing values</li>
+</ul>
 </li>
-<li>
-<p>Use the execution environment with <code>ansible-navigator</code></p>
+<li>The inventory should:
+<ul>
+<li>install Controller on instance 1</li>
+<li>install the other three AAP components from instance 1 on the other instances: <strong>instance 2 - PAH</strong>, <strong>instance 3 - Catalog</strong>, <strong>instance 4 - SSO</strong></li>
+</ul>
 </li>
-<li>
-<p>Use the execution environment with automation controller</p>
-</li>
-</ol>
+</ul>
 
+<div class="notices tip" ><p>Ansible basics: Disable host key checking, either by running <code>export ANSIBLE_HOST_KEY_CHECKING=False; ./setup.sh</code> or by putting</p>
+<pre><code>[defaults]
+host_key_checking = False
+</code></pre><p>into ./ansible.cfg</p>
+</div>
+
+<ul>
+<li>Run the installer</li>
+<li>Get a coffee. Or two.</li>
+</ul>
+<p>After the installation has finished, <strong>Private Automation Hub</strong> and <strong>Automation Services Catalog</strong> are configured for SSO. So to be able to login to the UIs, you have to configure a user with the proper roles in <strong>RH SSO</strong>.</p>
+<ul>
+<li>Create an admin user for PAH and catalog in the RH SSO Admin UI (<code>https://&lt;instance&gt;:8443</code>):
+<ul>
+<li><strong>Manage</strong> -&gt; <strong>Users</strong> -&gt; <strong>View all users</strong></li>
+<li>Create user <strong>aapadmin</strong></li>
+<li><strong>Save</strong></li>
+<li>Set a password in <strong>Credentials</strong></li>
+<li>In <strong>Role Mappings</strong> for this user: In <strong>Client Roles</strong> choose <code>automation-catalog</code>
+<ul>
+<li>Add role <code>catalog-admin</code></li>
+</ul>
+</li>
+<li>For <strong>Client Role</strong> <code>automation-hub</code>
+<ul>
+<li>Add role <code>hubadmin</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Now you have a user with admin permissions for PAH and Catalog.</p>
+<p><strong>Goal</strong></p>
+<ul>
+<li>Access to the web UIs on all four instances:
+<ul>
+<li>Automation Controller (user <code>admin</code>, password as set in inventory)</li>
+<li>Private Automation Hub (SSO user)</li>
+<li>Automation Services Catalog (sso user)</li>
+<li>RH SSO Admin UI (Port 8443, user <code>admin</code>, password as set in inventory)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Tips</strong></p>
+<p>Example inventory file:</p>
+<pre><code>[automationcontroller]
+&lt;instance-1&gt; ansible_connection=local
+
+[automationcontroller:vars]
+peers=execution_nodes
+
+[execution_nodes]
+
+[automationhub]
+&lt;instance-2&gt; ansible_user=ec2-user ansible_become=true
+
+[automationcatalog]
+&lt;instance-3&gt; ansible_user=ec2-user ansible_become=true
+
+[database]
+
+[sso]
+&lt;instance-4&gt; ansible_user=ec2-user ansible_become=true
+
+[all:vars]
+admin_password='&lt;password&gt;'
+pg_host=''
+pg_port=5432
+pg_database='awx'
+pg_username='awx'
+pg_password='&lt;password&gt;'
+pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
+
+registry_url='registry.redhat.io'
+registry_username='&lt;registry user&gt;'
+registry_password='&lt;registry token or password'
+
+receptor_listener_port=27199
+
+automationhub_admin_password='&lt;password&gt;'
+automationhub_pg_host='&lt;instance-1&gt;'
+automationhub_pg_port=5432
+automationhub_pg_database='automationhub'
+automationhub_pg_username='automationhub'
+automationhub_pg_password='&lt;password&gt;'
+automationhub_pg_sslmode='prefer'
+
+automationcatalog_pg_host='&lt;instance-1&gt;'
+automationcatalog_pg_port=5432
+automationcatalog_pg_database='automationservicescatalog'
+automationcatalog_pg_username='automationservicescatalog'
+automationcatalog_pg_password='&lt;password&gt;'
+automationcatalog_controller_verify_ssl=False
+
+sso_keystore_password='&lt;password&gt;'
+sso_console_admin_password='&lt;password&gt;'
+</code></pre>
 
 
 
@@ -898,23 +1045,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -1019,10 +1149,62 @@
 
                     
                     
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
                         
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1034,10 +1216,62 @@
 
                     
                     
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
                         
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1081,15 +1315,17 @@
 
                     
                     
-                        
-                    
                     
 
+                    
+            
+        
                     
                         
             
             
                 
+                    
                     
                 
                 
@@ -1107,85 +1343,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1298,10 +1457,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/5-automation-mesh/" title="Extend Automation Mesh"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/10-prepare-environment/" title="Prepare Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/7-bonus-using-catalog/" title="Bonus Track: Automation Catalog" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

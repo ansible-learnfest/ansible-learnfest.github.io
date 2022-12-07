@@ -7,59 +7,95 @@
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/2-getting-started/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/1-intro/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/3-track-1/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/2-getting-started/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/3-track-1/1-automation-controller/</loc>
+    <loc>https://ansible-learnfest.github.io/10-prepare-environment/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/3-track-1/2-config-controller/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/3-track-1/3-install-pah/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/1-automation-controller/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/3-track-1/4-use-pah/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/2-config-controller/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/3-track-1/5-automation-mesh/</loc>
+    <loc>https://ansible-learnfest.github.io/20-vscode/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/3-track-1/6-aap2-fullstack/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/3-install-pah/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/4-track-2/</loc>
+    <loc>https://ansible-learnfest.github.io/30-use-pah/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/4-track-2/1-vscode/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/4-use-pah/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/3-track-1/7-bonus-using-catalog/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/5-automation-mesh/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/4-track-2/2-build-ee/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/6-aap2-fullstack/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/4-track-2/3-transfer-ee/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/</loc>
   </url>
   
   <url>
-    <loc>https://ansible-learnfest.github.io/4-track-2/4-use-ee/</loc>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/1-vscode/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/7-bonus-using-catalog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/50-build-ee/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/2-build-ee/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/55-transfer-ee/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/3-transfer-ee/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/60-use-ee/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/4-use-ee/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ansible-learnfest.github.io/archive/</loc>
   </url>
   
   <url>

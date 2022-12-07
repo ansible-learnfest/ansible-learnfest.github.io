@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Ansible LearnFest</title>
+    <title>Extend Automation Mesh :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670404069" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/1-intro/">
+  <body class="" data-url="/archive/version-0.1/3-track-1/5-automation-mesh/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/1-intro/" title="Introduction" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/1-intro/">
@@ -263,7 +263,7 @@
   
     
     <li data-nav-id="/archive/" title="Archive" class="dd-item
-        
+        parent
         
         
         ">
@@ -292,7 +292,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/" title="Version 0.1" class="dd-item
-        
+        parent
         
         
         ">
@@ -373,7 +373,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/3-track-1/" title="Track 1: AAP Administrator" class="dd-item
-        
+        parent
         
         
         ">
@@ -507,7 +507,7 @@
     
     <li data-nav-id="/archive/version-0.1/3-track-1/5-automation-mesh/" title="Extend Automation Mesh" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/5-automation-mesh/">
@@ -797,7 +797,25 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Introduction
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/archive/'>Archive</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/'>Version 0.1</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/'>Track 1: AAP Administrator</a> > Extend Automation Mesh
+          
+        
+          
+        
+          
+        
           
         
           
@@ -810,7 +828,12 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#task-5-extend-automation-mesh">Task 5: Extend Automation Mesh</a>
+      <ul>
+        <li><a href="#install-execution-node">Install Execution Node</a></li>
+        <li><a href="#use-the-execution-node">Use the Execution Node</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -828,7 +851,7 @@
           
             <h1>
               
-              Introduction
+              Extend Automation Mesh
             </h1>
           
 
@@ -836,28 +859,56 @@
 
 
 
-	<h2 id="introduction">Introduction</h2>
-<p>The goal of this LearnFest is to teach you how to use execution environments with <code>ansible-builder</code>, <code>ansible-runner</code> and the Red Hat Ansible Automation Platform 2.</p>
-<ol>
-<li>
-<p>Setup environment</p>
+	<h2 id="task-5-extend-automation-mesh">Task 5: Extend Automation Mesh</h2>
+<p>Even a single-node Automation Controller installation contains an Automation Mesh, in this case it&rsquo;s living on the Controller node itself. In this case the node type is called &ldquo;hybrid&rdquo;, although you can install node types &ldquo;control&rdquo; but then you need execution nodes again.</p>
+<p>Go and check this on your Controller under <strong>Topology View</strong>. This section is about extending the Automation Mesh with a second Execution Node.</p>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>Automation Controller is running &amp; accessible</li>
+<li>You have run example Ansible content against an managed node</li>
+</ul>
+<p><strong>Tasks</strong></p>
+<h3 id="install-execution-node">Install Execution Node</h3>
+<ul>
+<li>You need to enable the AAP installer on your Controller node to connect to one of your AWS instances via SSH. This means either
+<ul>
+<li>to copy the private key you are using to connect to your instances to the Controller instance</li>
+<li>or to create a new SSH key on the Controller and copy the public key to the <code>authorized_keys</code> file on the machine you want to use as Execution Node.</li>
+</ul>
 </li>
-<li>
-<p>Get familiar with Visual Studio Code&rsquo;s Ansible extension</p>
+<li>For the fun of it you need to do a small AWS exercise: Open port <code>27199</code> on your Controller and your Execution Node by adding it to their respective <strong>Security Groups</strong> in the AWS Console
+<ul>
+<li>This is the <code>receptor</code> port Automation Mesh is communicating on and not open on the default AWS instance deployments.</li>
+</ul>
 </li>
-<li>
-<p>Setup private automation hub</p>
-</li>
-<li>
-<p>Build the execution environment</p>
-</li>
-<li>
-<p>Use the execution environment with <code>ansible-navigator</code></p>
-</li>
-<li>
-<p>Use the execution environment with automation controller</p>
-</li>
-</ol>
+<li>To install the Execution Node, edit the inventory file on your Controller by adding these lines:</li>
+</ul>
+<pre><code>[automationcontroller:vars]
+peers=execution_nodes
+
+[execution_nodes]
+&lt;execution node&gt; ansible_user=ec2-user ansible_become=yes
+</code></pre><ul>
+<li>Run the installer, wait for successful completion</li>
+</ul>
+<h3 id="use-the-execution-node">Use the Execution Node</h3>
+<p>Right now you have execution nodes, one is the Controller as a hybrid node, the other is the new Execution node. Now use the node by configuring the Controller to execute the jobs for your managed node on the new Execution node.</p>
+<ul>
+<li>Add a new <strong>Instance Group</strong></li>
+<li>Add the Execution Node to the <strong>Instance Node</strong></li>
+<li>You can configure on <strong>Organization, Inventory</strong> and <strong>Template</strong> level to use a specific Execution Node. Do this for the <strong>Template</strong> installing PHP or the <strong>Inventory</strong> with the managed node. Or play around, it&rsquo;s a LearnFest after all.</li>
+<li>Launch the <strong>Template</strong> and make sure it run on the Execution Node.</li>
+</ul>
+<p><strong>Goal</strong></p>
+<ul>
+<li>The installer installs the execution node without errors</li>
+<li>The new node appears in the Controller web UI under <strong>Topology View</strong>, you should now have one Hybrid Node and one Execution Node.</li>
+<li>You can launch a <strong>Template</strong> using the Execution Node to run it.</li>
+</ul>
+<p><strong>Tips</strong></p>
+<ul>
+<li>The Automation Mesh documentation is <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html-single/red_hat_ansible_automation_platform_automation_mesh_guide/">here</a></li>
+</ul>
 
 
 
@@ -898,23 +949,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -1019,6 +1053,23 @@
 
                     
                     
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
                         
                     
                     
@@ -1029,6 +1080,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1043,6 +1095,60 @@
             
             
                 
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1081,21 +1187,6 @@
 
                     
                     
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
                     
 
                     
@@ -1123,21 +1214,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1155,21 +1231,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -1298,10 +1361,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/4-use-pah/" title="Using Private Automation Hub"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/10-prepare-environment/" title="Prepare Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/6-aap2-fullstack/" title="AAP 2 Full Stack Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

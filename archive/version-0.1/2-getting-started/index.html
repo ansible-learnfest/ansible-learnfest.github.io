@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Ansible LearnFest</title>
+    <title>Prepare Base Environment :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670404069" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/1-intro/">
+  <body class="" data-url="/archive/version-0.1/2-getting-started/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/1-intro/" title="Introduction" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/1-intro/">
@@ -263,7 +263,7 @@
   
     
     <li data-nav-id="/archive/" title="Archive" class="dd-item
-        
+        parent
         
         
         ">
@@ -292,7 +292,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/" title="Version 0.1" class="dd-item
-        
+        parent
         
         
         ">
@@ -348,7 +348,7 @@
     
     <li data-nav-id="/archive/version-0.1/2-getting-started/" title="Prepare Base Environment" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/archive/version-0.1/2-getting-started/">
@@ -797,7 +797,19 @@
             
           
           
-            <a href='https://ansible-learnfest.github.io/'></a> > Introduction
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/archive/'>Archive</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/'>Version 0.1</a> > Prepare Base Environment
+          
+        
+          
+        
           
         
           
@@ -810,7 +822,8 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#setup-your-learnfest-base-environment">Setup your LearnFest Base Environment</a></li>
+    <li><a href="#deploy-rhel-instances-into-aws-account">Deploy RHEL Instances into AWS Account</a></li>
   </ul>
 </nav>
     </div>
@@ -828,7 +841,7 @@
           
             <h1>
               
-              Introduction
+              Prepare Base Environment
             </h1>
           
 
@@ -836,28 +849,56 @@
 
 
 
-	<h2 id="introduction">Introduction</h2>
-<p>The goal of this LearnFest is to teach you how to use execution environments with <code>ansible-builder</code>, <code>ansible-runner</code> and the Red Hat Ansible Automation Platform 2.</p>
-<ol>
-<li>
-<p>Setup environment</p>
+	<h2 id="setup-your-learnfest-base-environment">Setup your LearnFest Base Environment</h2>
+<p>You&rsquo;ll run the LearnFest tasks on RHEL instances on AWS. So before starting with AAP you have to stand up the needed instances.</p>
+
+<div class="notices tip" ><p>The guide has been tested using a blank AWS environment sandbox Red Hatters can order in RHPDS. But everything should work the same in a regular AWS account with access tho the RHEL 8 marketplace AMIs.</p>
+</div>
+
+<h2 id="deploy-rhel-instances-into-aws-account">Deploy RHEL Instances into AWS Account</h2>
+<p>So off to the first tasks: deploy the needed RHEL instances into an AWS account. And as a warm-up you&rsquo;ll use Ansible for this (we have prepared the Playbook for you). If this your first encounter with Execution Environments and <code>ansible-navigator</code>; just enjoy, you&rsquo;ll learn more about all this later.</p>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>A PC or VM prepared to run <code>ansible-navigator</code> and <code>podman</code></li>
+<li>Make sure you have access to an AWS account, Red Hatters please deploy Service &ldquo;AWS Blank Open Environment&rdquo; from RHPDS</li>
+<li>Make sure you have a valid <code>Access Key ID</code> and a <code>Secret Access Key</code> for your AWS account, Red Hatters will find this in the confirmation email from RHPDS</li>
+</ul>
+<p><strong>Tasks</strong></p>
+<ul>
+<li>On your <code>ansible-navigator</code> machine: Clone <a href="https://github.com/ansible-learnfest/playbooks-infra.git">https://github.com/ansible-learnfest/playbooks-infra.git</a> and change into the new directory.</li>
+<li>Follow the instructions in the repo&rsquo;s <a href="https://github.com/ansible-learnfest/playbooks-infra/blob/main/README.md">README.md</a> file to deploy the LearnFest base environment instances
+<ul>
+<li>Update the number of instances in <code>group_vars/all/main.yml</code> to <code>5</code> (<code>instance_total:</code>)</li>
+<li>Change the name prefix (<code>instance_name:</code>) of the instances if you want</li>
+<li>The Playbook will use the SSH key <code>~/.ssh/id_rsa.pub</code> by default, if this key doesn&rsquo;t exist or you want to use another key, change <code>ec2_key_pair:</code></li>
+<li>run the playbook with <code>ansible-navigator run cloud-infra.yml</code></li>
+</ul>
 </li>
-<li>
-<p>Get familiar with Visual Studio Code&rsquo;s Ansible extension</p>
+</ul>
+
+<div class="notices tip" ><p>How did <code>ansible-navigator</code> know which execution environment to use? Have a look at the <code>ansible-navigator.yml</code> config file&hellip;</p>
+</div>
+
+<p><strong>Goals</strong></p>
+<ul>
+<li><strong>5 x t3.large</strong> instances deployed in a new AWS VPC</li>
+<li>Look up the <strong>Public IPv4 DNS</strong> FQDN of your instances in the AWS Console.</li>
+<li>Being able to login via SSH into the instances using the FQDN&rsquo;s and to become root
+<ul>
+<li>Example: <code>ssh -i &quot;~/.ssh/id_rsa&quot;  ec2-user@ec2-3-72-65-199.eu-central-1.compute.amazonaws.com</code></li>
+</ul>
 </li>
-<li>
-<p>Setup private automation hub</p>
+</ul>
+<p><strong>Tips</strong></p>
+<ul>
+<li>Podman login for pulling the execution environment image is your quay.io credentials with encrypted password, not the RH Customer Portal credentials.
+<ul>
+<li>Instructions on how to get an employee account are <a href="https://source.redhat.com/groups/public/customer-service/for_stakeholders/for_non_cs_associates_wiki/how_to_request_a_quay_employee_subscription">on the source</a> (Request a “Type 1” account)</li>
+<li>Verify you can access the <a href="https://quay.io/repository/redhat_emp1/ee-ansible-ssa">execution environment</a></li>
+</ul>
 </li>
-<li>
-<p>Build the execution environment</p>
-</li>
-<li>
-<p>Use the execution environment with <code>ansible-navigator</code></p>
-</li>
-<li>
-<p>Use the execution environment with automation controller</p>
-</li>
-</ol>
+<li>Using the Ansible content from our repo you can tear down all instances and the VPC and start over: <code>ansible-navigator run cloud-infra.yml -e remove=true</code></li>
+</ul>
 
 
 
@@ -898,23 +939,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -1019,6 +1043,23 @@
 
                     
                     
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
                         
                     
                     
@@ -1029,6 +1070,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1043,6 +1085,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1060,6 +1105,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1075,6 +1121,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1298,10 +1347,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/archive/version-0.1/1-intro/" title="Introduction"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/10-prepare-environment/" title="Prepare Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/" title="Track 1: AAP Administrator" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
