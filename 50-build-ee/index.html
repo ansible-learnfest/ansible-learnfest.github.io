@@ -12,22 +12,22 @@
     <title>Build an execution environment :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670922050" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1670922050" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1670922050" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1670922050" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1670922050" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1670922050" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1670922050" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1670922050" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1670922050" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1670922050" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1670953670" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1670922050" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1670953670" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1670922050"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1670953670"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1670922050"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1670922050"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1670953670"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1670953670"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1670922050"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1670953670"></script>
 
     
   </div>
@@ -876,31 +876,29 @@
 <p>In the repo change to the <code>ansible-builder</code> directory</p>
 </li>
 <li>
-<p>Run <code>ansible-builder build -f ee-ansible-demo.yml -t ee-ansible-demo:0.1.0 -v 3</code></p>
+<p>Run <code>ansible-builder</code> to create the new EE as in the example below:</p>
 </li>
-<li>
-<p>Experiment with the other options, e.g. adding an RPM or Python package</p>
-</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-builder build -f ee-ansible-demo.yml -t ee-ansible-demo:0.1.0 -v <span style="color:#ae81ff">3</span>
+</code></pre></div><ul>
+<li>Experiment with the other options, e.g. adding an RPM or Python package</li>
 </ul>
 <h4 id="use-the-execution-environment">Use the Execution Environment</h4>
 <ul>
 <li>
-<p>Configure <code>ansible-navigator</code> to use the previously created EE either by specifying it on the command line or by creating an <code>ansible-navigator.yml</code> configuration file (you have one from Track 1).</p>
+<p>Configure <code>ansible-navigator</code> to use the previously created EE either by specifying it on the command line or by creating an <code>ansible-navigator.yml</code> configuration file.</p>
 </li>
 <li>
 <p>Inspect your EE by using <code>ansible-navigator</code>, e.g. to get the list of included collections, ansible versions etc.</p>
 </li>
 <li>
-<p>Run a playbook with your EE and verify everything works as expected. Why not deploy Azure objects?</p>
+<p>Run a playbook with your EE and verify everything works as expected.</p>
 <ul>
 <li>
-<p>Use environment variables to provide your Azure credentials. Red Hatters can get Azure credentials from RHPDS’ Azure Blank Open environment.</p>
+<p>Write a playbook using the <code>containers.podman</code> to create containers or use the previously used example on <a href="https://github.com/ansible-learnfest/ee-flow.git">ee-flow</a> project without the <code>requirements.yml</code> file.</p>
 </li>
 <li>
-<p>Write a playbook using the <code>azure.azcollection</code> to create objects in Azure</p>
-</li>
-<li>
-<p>you can find an example playbook in the <a href="https://github.com/ansible-learnfest/playbooks-infra">playbook-infra</a> project</p>
+<p>What do you notice</p>
 </li>
 </ul>
 </li>
@@ -912,13 +910,10 @@
 <h3 id="goals">Goals</h3>
 <ul>
 <li>
-<p>Build an EE adding two collections</p>
+<p>Build an EE adding at least one collection</p>
 </li>
 <li>
-<p>Use your execution environment to create an instance in Azure</p>
-</li>
-<li>
-<p>Don&rsquo;t forget to remove the instance and all associated resources - you can actually just remove the <code>resource group</code> which will remove all objects created within.</p>
+<p>Use your execution environment to create a container.</p>
 </li>
 </ul>
 <h3 id="tips">Tips</h3>
@@ -1398,19 +1393,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1670922050"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1670922050"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1670922050"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1670922050"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1670922050"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1670922050"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1670953670"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1670922050"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1670922050"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1670922050"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1670953670"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1670922050"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1670953670"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
