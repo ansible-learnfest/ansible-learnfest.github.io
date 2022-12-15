@@ -12,22 +12,22 @@
     <title>The VSCode extension :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1671112134" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1671112134" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1671112134" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1671112134" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1671112134" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1671112134" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1671112134" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1671112134" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1671112134" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1671112134" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1671112694" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1671112694" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1671112694" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1671112694" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1671112694" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1671112694" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1671112694" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1671112694" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1671112694" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1671112694" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1671112134" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1671112694" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1671112134"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1671112694"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1671112134"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1671112134"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1671112694"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1671112694"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1671112134"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1671112694"></script>
 
     
   </div>
@@ -896,13 +896,16 @@
         <span style="color:#f92672">&#34;*.yaml&#34;</span>: <span style="color:#e6db74">&#34;ansible&#34;</span>
     }<span style="color:#960050;background-color:#1e0010">,</span>
 </code></pre></div>
-<div class="notices warning" ><p>If you see this pop-up error message, you might have to downgrade your ansible-core package as instructed below:
-<code>Command failed: ansible-lint  --offline --nocolor -f codeclimate &quot;/home/student/rhel-workshop/1.3-playbook/apache.yml&quot;</code>
-<code>ERROR    No module named 'ansible'</code>
-<code>FATAL: ansible-lint requires a version of Ansible package &gt;= 2.9,but none was found. Please install a compatible version using the same python interpreter.</code><br> <code>See https://docs.ansible.com/ansible/latest/installation_guide/intro_ins&gt; &lt;br&gt; Then, try to downgrade your ansible-core package and reload your code-server page:&lt;br&gt;</code>$ sudo dnf install ansible-core-2.12.1`</p>
+<div class="notices warning" ><p>If you see this pop-up error message, you might have to downgrade your ansible-core package as instructed below.</p>
 </div>
 
-<ul>
+<pre><code class="language-raw" data-lang="raw">Command failed: ansible-lint  --offline --nocolor -f codeclimate &quot;/home/student/rhel-workshop/1.3-playbook/apache.yml&quot;
+ERROR No module named 'ansible'
+FATAL: ansible-lint requires a version of Ansible package &gt;= 2.9,but none was found. Please install a compatible version using the same python interpreter.
+See https://docs.ansible.com/ansible/latest/installation_guide/intro_ins&gt;
+</code></pre><p>Then, try to downgrade your ansible-core package and reload your code-server page:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dnf install ansible-core-2.12.1
+</code></pre></div><ul>
 <li>
 <p>tab completion</p>
 </li>
@@ -1381,19 +1384,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1671112134"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1671112134"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1671112134"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1671112134"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1671112134"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1671112134"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1671112694"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1671112694"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1671112694"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1671112694"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1671112694"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1671112694"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1671112134"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1671112134"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1671112134"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1671112694"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1671112694"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1671112694"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1671112134"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1671112694"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
