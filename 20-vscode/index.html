@@ -12,22 +12,22 @@
     <title>The VSCode extension :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1670953670" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1670953670" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1670953670" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1670953670" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1670953670" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1670953670" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1670953670" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1670953670" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1670953670" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1671110641" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1671110641" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1671110641" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1671110641" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1671110641" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1671110641" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1671110641" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1671110641" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1671110641" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1671110641" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1670953670" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1671110641" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1671110641"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1670953670"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1670953670"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1671110641"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1671110641"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1670953670"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1671110641"></script>
 
     
   </div>
@@ -846,7 +846,6 @@
 
 	<h2 id="introduction-to-the-vscode-extension">Introduction to the VSCode extension</h2>
 <p>We highly recommend making yourself familiar with Visual Studio Code and the Ansible extension. Even if you’re not planning to use it as your daily driver, it is good to know how it works to explain and show the benefit to customers.</p>
-<p>TODO: Check this still works in VSCode Server - it&rsquo;s probably already installed</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li>
@@ -889,7 +888,7 @@
 </li>
 <li>
 <p>Set <strong>Language Mode</strong> to Ansible</p>
-<p>Either on the VSCode status bar or put this into <code>~/.config/Code/User/settings.json</code>:</p>
+<p>Either on the VSCode status bar at the bottom of the window or by putting this into <code>~/..local/share/code-server/User/settings.json</code>:</p>
 </li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;files.associations&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
@@ -897,9 +896,6 @@
         <span style="color:#f92672">&#34;*.yaml&#34;</span>: <span style="color:#e6db74">&#34;ansible&#34;</span>
     }<span style="color:#960050;background-color:#1e0010">,</span>
 </code></pre></div><ul>
-<li>
-<p>you can also change the file type by clicking on the respective button in the status bar on the bottom of the VSCode window</p>
-</li>
 <li>
 <p>tab completion</p>
 </li>
@@ -919,7 +915,7 @@
 <h3 id="goals">Goals</h3>
 <p>Start VSCode, install the Ansible extension and get familiar with its features.</p>
 <h3 id="tips">Tips</h3>
-<p>Although VSCode of course runs on Linux, Mac and Windows, there are some extra tasks to be done to get Ansible working on Windows. It&rsquo;s beyond the scope of this manual to provide detailed instructions on how to setup Podman and Ansible on Windows.</p>
+<p>Although VSCode of course runs on Linux, Mac and Windows, there are some extra tasks to be done to get Ansible working on Windows or Mac. It&rsquo;s beyond the scope of this manual to provide detailed instructions on how to setup Podman and Ansible on Windows or Mac.</p>
 <h3 id="challenge-tasks">Challenge Tasks</h3>
 <p>Try to configure VSCode to use Ansible inside an execution environment. The EE supported is already installed on the bastion host and can be used for these experiments.</p>
 
@@ -1378,19 +1374,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1670953670"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1670953670"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1670953670"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1670953670"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1670953670"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1671110641"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1671110641"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1671110641"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1671110641"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1671110641"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1671110641"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1670953670"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1670953670"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1670953670"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1671110641"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1671110641"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1671110641"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1670953670"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1671110641"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
