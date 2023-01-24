@@ -12,22 +12,22 @@
     <title>Transfer Execution Environment :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1674570392" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1674570392" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1674570392" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1674570392" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1674570392" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1674570392" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1674570392" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1674570392" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1674570392" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1674570392" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1674570482" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1674570482" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1674570482" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1674570482" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1674570482" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1674570482" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1674570482" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1674570482" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1674570482" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1674570482" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1674570392" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1674570482" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1674570392"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1674570482"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1674570392"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1674570392"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1674570482"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1674570482"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1674570392"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1674570482"></script>
 
     
   </div>
@@ -810,7 +810,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#transfer-your-ee">Transfer your EE</a>
+    <li><a href="#transfer-your-execution-environment-to-private-automation-hub">Transfer your Execution Environment to Private Automation Hub</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#tasks">Tasks</a></li>
@@ -844,53 +844,49 @@
 
 
 
-	<h2 id="transfer-your-ee">Transfer your EE</h2>
+	<h2 id="transfer-your-execution-environment-to-private-automation-hub">Transfer your Execution Environment to Private Automation Hub</h2>
+<p>So by now you have seen how to use a collection that is not included in one of the official EE&rsquo;s and in the next step how to build a custom EE with the required collection and testing it.</p>
+<p>The next step is to get your custom EE into a container registry so it can be used in Automation Controller. An since PAH is a container registry, too, we&rsquo;ll use it.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>
-<p>A working execution environment</p>
-</li>
-<li>
-<p>private automation hub to store your EE</p>
-</li>
+<li>The (working) custom execution environment from the previous chapter</li>
+<li>Access to your Private Automation Hub to store your EE</li>
 </ul>
 <h3 id="tasks">Tasks</h3>
 <ul>
-<li>
-<p>Publish your EE to your private automation hub</p>
-</li>
-<li>
-<p>Add additional tags or labels and push them to the registry</p>
-</li>
-<li>
-<p>Experiment with other registries, e.g. Quay (make sure to either delete your EE after you&rsquo;re done or make sure it’s not publicly accessible since the EE supported requires a subscription!)</p>
-</li>
-<li>
-<p>Delete old versions of the EE</p>
-</li>
+<li>Push your EE to your Private Automation Hub</li>
+<li>Add additional tags or labels and push them to the registry</li>
+<li>Delete old versions of the EE</li>
 </ul>
 <h3 id="push-image-to-pah">Push image to PAH</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">podman login hub-student.&lt;LABID&gt;.example.opentlc.com --tls-verify<span style="color:#f92672">=</span>false --username admin --password &lt;YOURPASSWORD&gt;
-podman tag localhost/ee-ansible-demo:0.1.0  hub-student.&lt;LABID&gt;.example.opentlc.com/ee-ansible-demo:latest
-podman push localhost/ee-ansible-demo:0.1.0 hub-student.&lt;LABID&gt;.example.opentlc.com/ee-ansible-demo --tls-verify<span style="color:#f92672">=</span>false
-</code></pre></div><p>Log into the Web UI of your automation hub and you will find the execution environment in the <strong>Execution Environments</strong> menu.</p>
+<p>Pusing an EE to the PAH registry is pretty straight forward: You just use Podman like with any other registry. The parameters you need are:</p>
+<ul>
+<li>The URL, this is the same as the PAH web UI</li>
+<li>Username/password, again same as for the web UI</li>
+<li>Disable certificate verification becasue our PAH uses a self-signed certificate</li>
+</ul>
+<p>The just do the following:</p>
+<ul>
+<li>Find the name of the local image</li>
+<li>Tag the local image with the registry</li>
+<li>Push it</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">podman login &lt;PAH URL&gt; --tls-verify<span style="color:#f92672">=</span>false --username admin --password &lt;YOURPASSWORD&gt;
+podman images
+podman tag localhost/ee-ansible-demo:0.1.0  &lt;PAH URL&gt;/ee-ansible-demo:latest
+podman push localhost/ee-ansible-demo:0.1.0 &lt;PAH URL&gt;/ee-ansible-demo --tls-verify<span style="color:#f92672">=</span>false
+</code></pre></div><ul>
+<li>Check the image is in PAH: Log into the Web UI of your automation hub and you will find the execution environment in the <strong>Execution Environments</strong> menu.</li>
+</ul>
 <h3 id="goals">Goals</h3>
 <ul>
-<li>
-<p>Publish an EE in your own registry</p>
-</li>
-<li>
-<p>Get familiar with basic EE management tasks</p>
-</li>
+<li>Publish an EE in your own registry</li>
+<li>Get familiar with basic EE management tasks</li>
 </ul>
 <h3 id="tips">Tips</h3>
 <ul>
-<li>
-<p><a href="https://github.com/containers/skopeo">Skopeo documentation</a></p>
-</li>
-<li>
-<p><a href="https://docs.podman.io/en/latest/">Podman documentation</a></p>
-</li>
+<li><a href="https://github.com/containers/skopeo">Skopeo documentation</a></li>
+<li><a href="https://docs.podman.io/en/latest/">Podman documentation</a></li>
 </ul>
 
 
@@ -1348,19 +1344,19 @@ podman push localhost/ee-ansible-demo:0.1.0 hub-student.&lt;LABID&gt;.example.op
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1674570392"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1674570392"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1674570392"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1674570392"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1674570392"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1674570392"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1674570482"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1674570482"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1674570482"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1674570482"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1674570482"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1674570482"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1674570392"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1674570392"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1674570392"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1674570482"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1674570482"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1674570482"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1674570392"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1674570482"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
