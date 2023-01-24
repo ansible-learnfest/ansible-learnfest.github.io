@@ -12,22 +12,22 @@
     <title>Using Private Automation Hub :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1673280141" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1673280141" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1673280141" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1673280141" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1673280141" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1673280141" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1673280141" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1673280141" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1673280141" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1673280141" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1674551191" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1674551191" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1674551191" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1674551191" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1674551191" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1674551191" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1674551191" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1674551191" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1674551191" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1674551191" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1673280141" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1674551191" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1673280141"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1674551191"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1673280141"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1673280141"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1674551191"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1674551191"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1673280141"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1674551191"></script>
 
     
   </div>
@@ -814,7 +814,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#tasks">Tasks</a></li>
-        <li><a href="#add-content-to-your-private-automation-hub">Add content to your private Automation Hub</a></li>
+        <li><a href="#add-and-use-content-in-your-private-automation-hub">Add and use content in your Private Automation Hub</a></li>
         <li><a href="#test-private-automation-hub-integration">Test Private Automation Hub Integration</a></li>
         <li><a href="#goals">Goals</a></li>
         <li><a href="#tips">Tips</a></li>
@@ -849,140 +849,134 @@
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li>
-<p>Automation Controller is running and accessible</p>
+<p>Make sure you can login to your:</p>
+<ul>
+<li>Automation Controller</li>
+<li>Private Automation Hub (PAH)</li>
+</ul>
 </li>
 <li>
-<p>Private Automation Hub is running and accessible</p>
+<p>Using the access information/credentials provided</p>
 </li>
 </ul>
 <h3 id="tasks">Tasks</h3>
 <ul>
-<li>
-<p>Configure Automation Controller to access your Private Automation Hub</p>
-</li>
-<li>
-<p>Add collections from Red Hat Automation Hub, Galaxy and custom ones created by you.</p>
-</li>
-<li>
-<p>Add execution environment images</p>
-</li>
+<li>Add collections from Red Hat Automation Hub and Galaxy to PAH</li>
+<li>Configure Automation Controller to access your Private Automation Hub</li>
+<li>Use a collection from PAH in Automation Controller</li>
 </ul>
 <p>Let&rsquo;s start, as the docs for this are distributed over some places we&rsquo;ll give some more instructions.</p>
-<h3 id="add-content-to-your-private-automation-hub">Add content to your private Automation Hub</h3>
+<h3 id="add-and-use-content-in-your-private-automation-hub">Add and use content in your Private Automation Hub</h3>
 <p>Most of this is well documented <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html-single/managing_red_hat_ansible_content_collections_and_ansible_galaxy_collections_in_automation_hub/index">here</a></p>
-<h4 id="sync-collections-from-red-hat-automation-hub">Sync collections from Red Hat Automation Hub</h4>
+<h4 id="sync-collections-from-red-hat-automation-hub-to-pah">Sync collections from Red Hat Automation Hub to PAH</h4>
 <ul>
-<li>
-<p>Go to <code>console.redhat.com</code> and open <strong>Ansible Automation Platform</strong> -&gt; <strong>Automation Hub</strong> -&gt; <strong>Collections</strong>. Here you can enable/disable the sync of certain collections.</p>
-</li>
-<li>
-<p>What you need to do is to get the authentication token and configure it in your PAH:</p>
+<li>Go to <code>console.redhat.com</code> and open <strong>Ansible Automation Platform</strong> -&gt; <strong>Automation Hub</strong> -&gt; <strong>Collections</strong>. Here you can enable/disable the sync of certain collections.</li>
+<li>What you need to do is to get the authentication token and configure it in your PAH:
 <ul>
-<li>
-<p>In Red Hat Automation Hub go to <strong>Connect to Hub</strong> we will need the <strong>Offline Token</strong> and the <strong>Server URL</strong></p>
-</li>
-<li>
-<p>In your private automation hub go to <strong>Collections</strong> -&gt; <strong>Repository management</strong> -&gt; <strong>Remote</strong></p>
-</li>
-<li>
-<p>Edit the <code>rh-certified</code> remote:</p>
+<li>In Red Hat Automation Hub go to <strong>Connect to Hub</strong> we will need the <strong>Offline Token</strong> and the <strong>Server URL</strong></li>
+<li>In your private automation hub go to <strong>Collections</strong> -&gt; <strong>Repository management</strong> -&gt; <strong>Remote</strong></li>
+<li>Edit the <code>rh-certified</code> remote:
 <ul>
-<li>
-<p><strong>URL</strong> paste the <strong>Server URL</strong> from the Red Hat Automation Hub</p>
-</li>
-<li>
-<p><strong>Token</strong> the token you copied from RH AH</p>
-</li>
-<li>
-<p>Click <strong>Save</strong> and then hit <strong>Sync</strong>. This will sync all enabled and updated collections from Red Hat Automation Hub to your Private Automation Hub.</p>
-</li>
+<li><strong>URL</strong> paste the <strong>Server URL</strong> from the Red Hat Automation Hub</li>
+<li><strong>Token</strong> the token you copied from RH AH</li>
+<li>Click <strong>Save</strong> and then hit <strong>Sync</strong>. This will sync all enabled and updated collections from Red Hat Automation Hub to your Private Automation Hub.</li>
 </ul>
 </li>
 </ul>
 </li>
+<li>After the sync process has finished, check the certified collections are visible on PAH.</li>
 </ul>
-<h4 id="sync-selected-community-collections-from-ansible-galaxy">Sync selected community collections from Ansible Galaxy</h4>
+<h4 id="integrate-your-pah-in-automation-controller">Integrate your PAH in Automation Controller</h4>
+<p>Automation Controller doesn&rsquo;t know about your Private Automation Hub, yet. The first step is to create a new Credential pointing to your PAH:</p>
+<p>Get access URL and Token fromm your PAH and put them down somewhere:</p>
+<ul>
+<li>In PAH, <strong>Collections</strong>-&gt;<strong>Repository management</strong></li>
+<li>Get the URLs for the <strong>local</strong> repos <strong>community</strong>, <strong>published</strong> and <strong>rh-certified</strong></li>
+<li>Get the access token from <strong>Collections</strong>-&gt;<strong>API Token</strong></li>
+</ul>
+<p>Then configure three new credentials in Automation Controller for the three URLs:</p>
+<ul>
+<li><strong>Name</strong>: PAH {Community,Published,RH-Certified}</li>
+<li><strong>Organization</strong>: default</li>
+<li><strong>Credential Type</strong>: Ansible Galaxy/Automation Hub API Token</li>
+<li><strong>Galaxy Server URL</strong>: <the respective community repo URL></li>
+<li><strong>API Token</strong>: <the token></li>
+</ul>
+<p>Now the access information is configured but not used by Automation Controller. This is done on <strong>Organization</strong> level.</p>
+<ul>
+<li>Open the <code>default</code> <strong>Organization</strong> in Automation Controller and click <strong>Edit</strong></li>
+<li>Have a look at the <strong>Galaxy Credentials</strong> field. There is only one credential pointing to Ansible Galaxy. This is the default.</li>
+<li>Remove the credential and add the one pointing to your PAH.</li>
+</ul>
+
+<div class="notices note" ><p>You could add more credentials here, the order of these credentials sets precedence for the sync and lookup of the content.</p>
+</div>
+
+<h3 id="test-private-automation-hub-integration">Test Private Automation Hub Integration</h3>
+<p>Now check that Automation Controller can actually use the content from your PAH by creating a <strong>Job Template</strong> that requires a collection that is not part of the included Execution Environments:</p>
+<ul>
+<li>
+<p>Create a new <strong>Project</strong> pointing here: <code>https://github.com/ansible-learnfest/ee-flow.git</code></p>
+<ul>
+<li>Have a look at the content on GitHub, esp the <code>collections/requirements.yml</code> file</li>
+</ul>
+</li>
+<li>
+<p>Update the existing <strong>Workshop Inventory</strong>:</p>
+<ul>
+<li>remove <code>ansible-1</code> from the list of <strong>Hosts</strong></li>
+<li>Disable <code>node2</code> and <code>node3</code></li>
+</ul>
+</li>
+<li>
+<p>Create a new <strong>Job Template</strong>:</p>
+<ul>
+<li><strong>Name</strong>: up to you</li>
+<li><strong>Inventory</strong>: The <code>Workshop Inventory</code></li>
+<li><strong>Project</strong>: The one you just created</li>
+<li><strong>Execution Environment</strong>: <code>Ansible Engine 2.9 execution environment</code></li>
+<li><strong>Playbook</strong>: <code>deploy-container.yml</code></li>
+<li>Set the right <strong>Credentials</strong> : <code>Workshop Credential</code></li>
+<li>Check <strong>Privilege Escalation</strong></li>
+</ul>
+</li>
+<li>
+<p>Launch the <strong>Template</strong></p>
+</li>
+</ul>
+<p>If you followed the steps above you should <strong>get an error</strong>. Why? Because You pointed Automation Controller to your PAH but the collection required in the requirements.yml is not there. Check the output of the <code>Source Control Update</code> job under <strong>Views</strong>-&gt;<strong>Jobs</strong>.</p>
+<p>So let&rsquo;s get the collection on PAH.</p>
+<h4 id="sync-selected-community-collections-from-ansible-galaxy-to-pah">Sync selected community collections from Ansible Galaxy to PAH</h4>
 <p>Galaxy is configured as the remote <code>community</code> out of the box. Follow the instructions to configure the synchronization.</p>
 <ul>
-<li>Create a regular requirements.yml file pointing to the collection you want, we&rsquo;ll use the one from the docs:</li>
+<li>Create a regular requirements.yml file pointing to the <code>containers.podman</code> collection:</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">collections</span>:
   <span style="color:#75715e"># Install a collection from Ansible Galaxy.</span>
   - <span style="color:#66d9ef">name</span>: containers.podman
 </code></pre></div><ul>
-<li>
-<p>Go to Repo Management, click the <strong>Remote</strong> tab again</p>
-</li>
-<li>
-<p>Edit the <code>community</code> remote</p>
-</li>
-<li>
-<p>In <strong>YAML requirements</strong> upload the  <code>requirements.yml</code> file from your local machine.</p>
-</li>
-<li>
-<p>Click <strong>Save</strong></p>
-</li>
-<li>
-<p>In the <strong>Remote</strong> overview tab click <strong>Sync</strong> for the <code>community</code> remote</p>
-</li>
+<li>Go to Repo Management, click the <strong>Remote</strong> tab again</li>
+<li>Edit the <code>community</code> remote</li>
+<li>In <strong>YAML requirements</strong> upload the  <code>requirements.yml</code> file from your local machine.</li>
+<li>Click <strong>Save</strong></li>
+<li>In the <strong>Remote</strong> overview tab click <strong>Sync</strong> for the <code>community</code> remote</li>
 </ul>
 <p>Verify the sync of the collections in <strong>Collections</strong> -&gt; <strong>Collections</strong>, switch the repository filter with the dropdown at the top. There should be a lot of content in the <code>Red Hat Certified</code> repo and one collection in the <code>Community</code> repo. The &lsquo;published&rsquo; filter will not find anything, since we haven&rsquo;t uploaded any collections we created ourselves.</p>
-<h3 id="test-private-automation-hub-integration">Test Private Automation Hub Integration</h3>
-<p>Now check that your Automation Controller can actually use the content from your PAH:</p>
+<p><strong>Run your Job Template again.</strong></p>
 <ul>
-<li>
-<p>Create a new <strong>Project</strong> pointing here: <code>https://github.com/ansible-learnfest/ee-flow.git</code></p>
-<ul>
-<li>Have a look at the content, esp the <code>collections/requirements.yml</code> file</li>
+<li>It should now run and deploy an httpd container that is hosting a small website.</li>
+<li>Test it from the terminal in VS Code Server:</li>
 </ul>
-</li>
-<li>
-<p>Create an inventory of the target machine or update <strong>Workshop Inventory</strong> by removing <code>ansible-1</code> from the list of <strong>Hosts</strong></p>
-</li>
-<li>
-<p>Create a new <strong>Job Template</strong>:</p>
+<pre><code>$ curl node1
+</code></pre><p>So recap what happened:</p>
 <ul>
-<li>
-<p><strong>Name</strong>: up to you</p>
-</li>
-<li>
-<p><strong>Inventory</strong>: The one you set up with the Playbook before, it should contain one of your AWS instances, or if you updated the <code>Workshop Inventory</code>, use this one.</p>
-</li>
-<li>
-<p><strong>Project</strong>: The one you just created</p>
-</li>
-<li>
-<p><strong>Execution Environment</strong>: <code>Ansible Engine 2.9 execution environment</code></p>
-</li>
-<li>
-<p><strong>Playbook</strong>: <code>deploy-container.yml</code></p>
-</li>
-<li>
-<p>Set the right <strong>Credentials</strong> : <code>Workshop Credential</code></p>
-</li>
-<li>
-<p>Check <strong>Privilege Escalation</strong></p>
-</li>
-</ul>
-</li>
-<li>
-<p>Launch the <strong>Template</strong>, if all was configured correctly it should deploy an httpd container that is hosting a small website.</p>
-</li>
-</ul>
-<p>So recap what happened:</p>
-<ul>
-<li>
-<p>You created a <strong>Template</strong> that runs a Playbook that has a requirement on a certain Collection which is not part of the Execution Environments included in Controller.</p>
-</li>
-<li>
-<p>Your <strong>Organization</strong> (<code>default</code>) is configured in a way it can only download Collections from your Private Automation Hub</p>
-</li>
-<li>
-<p>The Collection did exist on your PAH</p>
-</li>
+<li>You created a <strong>Template</strong> that runs a Playbook that has a requirement on a certain Collection which is <strong>not part of the Execution Environments included in Controller</strong>.</li>
+<li>Your <strong>Organization</strong> (<code>default</code>) is configured in a way it can only download Collections from your Private Automation Hub</li>
+<li>The Collection did exist on your PAH</li>
 </ul>
 
-<div class="notices note" ><p>As this collection is not part of the Execution Environment the Playbook uses, how did it work? In this case is it was dynamically &ldquo;added&rdquo; to the Execution Environment at runtime. This behavior did already exist in Ansible Tower 3.8, and it still does work in automation controller. This means, you only have to build your own execution environment if your collection has additional Python or package dependencies. You can double check by looking at the details of the &ldquo;source control update&rdquo; job of your project and click on the &ldquo;fetch galaxy collections from collections/requirements&rdquo; task.</p>
+<div class="notices note" ><p>As this collection is not part of the Execution Environment the Playbook uses, how did it work?
+In this case is it was dynamically &ldquo;added&rdquo; to the Execution Environment at runtime. This behavior did already exist in Ansible Tower 3.8, and it still does work in automation controller. This means, you only have to build your own execution environment if your collection has additional Python or package dependencies. You can double check by looking at the details of the &ldquo;source control update&rdquo; job of your project and click on the &ldquo;fetch galaxy collections from collections/requirements&rdquo; task.</p>
 </div>
 
 <h3 id="goals">Goals</h3>
@@ -1448,19 +1442,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1673280141"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1673280141"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1673280141"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1673280141"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1673280141"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1673280141"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1674551191"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1674551191"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1674551191"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1674551191"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1674551191"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1674551191"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1673280141"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1673280141"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1673280141"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1674551191"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1674551191"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1674551191"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1673280141"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1674551191"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
