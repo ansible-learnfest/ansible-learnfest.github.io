@@ -12,22 +12,22 @@
     <title>Use the EE in controller :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1674577004" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1674577004" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1674577004" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1674577004" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1674577004" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1674577004" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1674577004" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1674577004" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1674577004" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1674577004" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1674649226" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1674577004" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1674649226" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1674577004"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1674649226"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1674577004"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1674577004"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1674649226"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1674649226"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1674577004"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1674649226"></script>
 
     
   </div>
@@ -815,6 +815,7 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#tasks">Tasks</a></li>
         <li><a href="#configure-ee-in-controller">Configure EE in Controller</a></li>
+        <li><a href="#bring-it-all-together">Bring it all together</a></li>
         <li><a href="#challenge-tasks">Challenge tasks</a></li>
         <li><a href="#goal">Goal</a></li>
         <li><a href="#tips">Tips</a></li>
@@ -846,91 +847,66 @@
 
 
 	<h2 id="use-the-ee-in-controller">Use the EE in controller</h2>
+<p>You have tested running a Playbook that depends on the Podman collection with <code>ansible-navigator</code>. Now it&rsquo;s time to use the custom EE with the Podman collection in Automation Controller.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>
-<p>Publish an EE to private automation hub</p>
-</li>
-<li>
-<p>Configure controller to access the private automation hub and pull the EE</p>
-</li>
+<li>The custom EE was pushed and is published in PAH</li>
 </ul>
 <h3 id="tasks">Tasks</h3>
+<ul>
+<li>Check Automation Controller is configured to use EE&rsquo;s in PAH</li>
+<li>Use the custom EE in Controller</li>
+</ul>
 <h3 id="configure-ee-in-controller">Configure EE in Controller</h3>
 <ul>
-<li>
-<p>Check the <strong>Credential</strong> Automation Hub Container Registry point to the PAH</p>
+<li>Check the <strong>Credential</strong> <code>Automation Hub Container Registry</code> points to PAH
 <ul>
-<li>
-<p><strong>Name</strong>: private automation hub</p>
-</li>
-<li>
-<p><strong>Organization</strong>: Default</p>
-</li>
-<li>
-<p><strong>Credential Type</strong>: Container Registry</p>
-</li>
-<li>
-<p><strong>Authentication URL</strong>:</p>
-</li>
-<li>
-<p><strong>Username</strong>: admin</p>
-</li>
-<li>
-<p><strong>Password</strong>: &lt;your secret password&gt;</p>
-</li>
-<li>
-<p><strong>Verify SSL</strong>: disabled</p>
-</li>
+<li><strong>Name</strong>: Automation Hub Container Registry</li>
+<li><strong>Organization</strong>: Default</li>
+<li><strong>Credential Type</strong>: Container Registry</li>
+<li><strong>Authentication URL</strong>:</li>
+<li><strong>Username</strong>: admin</li>
+<li><strong>Password</strong>: &lt;your secret password&gt;</li>
+<li><strong>Verify SSL</strong>: disabled</li>
 </ul>
 </li>
 </ul>
 
-<div class="notices note" ><p>You can find the Authentication URL on your private automation hub by navigating to <strong>Execution Environments</strong>, select the EE you want to use and then in the <strong>Details</strong>.</p>
+<div class="notices note" ><p>You can find the Authentication URL on your private automation hub by navigating to <strong>Execution Environments</strong>, select the EE you want to use and then in <strong>Details</strong>.</p>
 </div>
 
 <ul>
-<li>
-<p>Go to <code>Execution Environments</code> and add the new EE</p>
+<li>Go to <code>Execution Environments</code> and add the new EE
 <ul>
-<li>
-<p><strong>Name</strong>: ee-ansible-demo</p>
-</li>
-<li>
-<p><strong>Image</strong>: hub-student.LABID.example.opentlc.com/ee-ansible-ssa/latest</p>
-</li>
-<li>
-<p><strong>Pull</strong>: Always</p>
-</li>
-<li>
-<p><strong>Credential</strong>: private automation hub</p>
-</li>
-<li>
-<p><strong>Organization</strong>: Default</p>
-</li>
+<li><strong>Name</strong>: ee-ansible-demo</li>
+<li><strong>Image</strong>: &lt;PAH URL&gt;/&lt;image name&gt;:&lt;tag&gt;</li>
+<li><strong>Pull</strong>: Always</li>
+<li><strong>Registry Credential</strong>: Automation Hub Container Registry</li>
+<li><strong>Organization</strong>: Default</li>
 </ul>
 </li>
-<li>
-<p>Create a job template using the newly created EE</p>
+</ul>
+
+<div class="notices note" ><p>Get the image location from your PAH: In <strong>Execution Environemnts</strong> click the image.</p>
+</div>
+
+<h3 id="bring-it-all-together">Bring it all together</h3>
+<p>This time we&rsquo;ll run the Playbook you used before but in your custom EE! That means we shouldn&rsquo;t have to use a <code>requirements.yml</code> file to automatically load the needed collection because <code>containers.podman</code> is already included in the EE.</p>
+<ul>
+<li>Create a new <strong>Project</strong> using <code>https://github.com/ansible-learnfest/ee-flow.git</code> <strong>with the branch <code>wo-requirements</code>.</strong> (This branch contains no <code>requirement.yml</code> to automatically add the collection)</li>
+<li>Create a <strong>Job Template</strong> with the same settings as in the <code>Using Private Automation Hub</code> chapter with one exception:
+<ul>
+<li><strong>Use your new custom Execution Environment</strong></li>
+</ul>
 </li>
-<li>
-<p>Test a playbook with the collection you added to the EE, e.g. deploy a new container</p>
-</li>
-<li>
-<p>There is an example playbook available in the <a href="https://github.com/ansible-learnfest/ee-flow">deploy-container.yml</a> project</p>
-</li>
+<li>Enable <code>node3</code> in the <strong>Workshop Inventory</strong></li>
+<li>Run the Playbook and check the outcome</li>
 </ul>
 <h3 id="challenge-tasks">Challenge tasks</h3>
 <ul>
-<li>
-<p>Build another EE with different content, import it into Controller and use different job templates with different EE’s</p>
-</li>
-<li>
-<p>Think about version pinning in the EE: what’s the best way to do it? How can you track versioning?</p>
-</li>
-<li>
-<p>If you use GitLab or GitHub have a look at <a href="https://renovatebot.com">RenovateBot</a> which can help you to track dependencies. <a href="https://docs.renovatebot.com/">https://docs.renovatebot.com/</a></p>
-</li>
+<li>Build another EE with different content, import it into Controller and use different job templates with different EE’s</li>
+<li>Think about version pinning in the EE: what’s the best way to do it? How can you track versioning?</li>
+<li>If you use GitLab or GitHub have a look at <a href="https://renovatebot.com">RenovateBot</a> which can help you to track dependencies. <a href="https://docs.renovatebot.com/">https://docs.renovatebot.com/</a></li>
 </ul>
 <h3 id="goal">Goal</h3>
 <ul>
@@ -1394,19 +1370,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1674577004"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1674577004"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1674577004"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1674577004"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1674577004"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1674577004"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1674649226"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1674577004"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1674577004"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1674577004"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1674649226"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1674577004"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1674649226"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
