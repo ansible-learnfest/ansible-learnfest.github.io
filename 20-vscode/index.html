@@ -12,22 +12,22 @@
     <title>The VSCode extension :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1674649226" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1674649226" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1674649226" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1674649226" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1674649226" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1674649226" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1674649226" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1674649226" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1674649226" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1674658610" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1674649226" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1674658610" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1674658610"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1674649226"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1674649226"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1674658610"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1674658610"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1674649226"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1674658610"></script>
 
     
   </div>
@@ -852,14 +852,14 @@
 </div>
 
 <p>Make sure you can access your VS Code Server instance using the credentials provided.</p>
-<p>We found a bug last minute in the blueprint we use for this lab. Please run this command to make sure yamllint is not installed from EPEL:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum distro-sync --disablerepo<span style="color:#f92672">=</span>epel
+<p>We found a bug last minute in the blueprint we use for this lab. Please run this command to make sure &ldquo;yamllint&rdquo; and its dependencies are not installed from EPEL:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo yum distro-sync --disablerepo<span style="color:#f92672">=</span>epel
 </code></pre></div><h3 id="tasks">Tasks</h3>
 <ul>
 <li>Make sure the extension is installed (Hint: <strong>Extensions</strong> menu on the left navigation bar, or from the <strong>View</strong> menu.)</li>
 </ul>
 
-<div class="notices note" ><p>Double check you have the latest version of the Ansible extension by Red Hat and remove older or other versions. You might see a &ldquo;reload&rdquo; button next to the extension which you need to click to complete the installation.</p>
+<div class="notices warning" ><p>Double check you have the latest version of the Ansible extension by Red Hat and remove older or other versions. You might see a &ldquo;reload&rdquo; button next to the extension which you need to click to complete the installation.</p>
 </div>
 
 <p>You can now test the extension by performing the following tasks.</p>
@@ -1342,19 +1342,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1674649226"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1674649226"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1674649226"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1674649226"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1674649226"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1674658610"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1674649226"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1674649226"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1674649226"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1674658610"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1674649226"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1674658610"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
