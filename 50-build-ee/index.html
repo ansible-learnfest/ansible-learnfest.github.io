@@ -12,22 +12,22 @@
     <title>Build an execution environment :: Ansible LearnFest</title>
 
     
-    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1674658610" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1674658610" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1674658610" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1674658610" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1674658610" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1674658610" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1674658610" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/theme.css?1674658610" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/tabs.css?1674658610" rel="stylesheet">
-    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/nucleus.css?1674736116" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/fontawesome-all.min.css?1674736116" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hybrid.css?1674736116" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/featherlight.min.css?1674736116" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/perfect-scrollbar.min.css?1674736116" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/auto-complete.css?1674736116" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/atom-one-dark-reasonable.css?1674736116" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme.css?1674736116" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/tabs.css?1674736116" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/hugo-theme.css?1674736116" rel="stylesheet">
     
-    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1674658610" rel="stylesheet">
+    <link href="https://ansible-learnfest.github.io/css/theme-red.css?1674736116" rel="stylesheet">
     
     
 
-    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery-3.3.1.min.js?1674736116"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1674658610"></script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1674658610"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/lunr.min.js?1674736116"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/auto-complete.js?1674736116"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ansible-learnfest.github.io\/";
     
 </script>
-<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1674658610"></script>
+<script type="text/javascript" src="https://ansible-learnfest.github.io/js/search.js?1674736116"></script>
 
     
   </div>
@@ -902,7 +902,7 @@ sudo yum install ansible-builder
 <li>After the build has finished, check the image is there:</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">podman images
-</code></pre></div><p>As said <code>podman</code> is used to actually build the image, the <code>Containerfile</code> needed is created by <code>ansible-builder</code>. Please take the time to locate it and have a look at it.</p>
+</code></pre></div><p>As <code>podman</code> is used to actually build the image, the <code>Containerfile</code> needed by Podman is created by <code>ansible-builder</code>. Please take the time to locate it and have a look at it.</p>
 <h4 id="use-the-execution-environment">Use the Execution Environment</h4>
 <p>Before we push a custom EE to a registry and use it in Automation Controller we want to make sure it provides what we need to run our Playbooks with all dependencies. Basically check if it works&hellip; :-)</p>
 <p>For this we run a Playbook in the runtime environment the EE provides. Because <code>ansible-playbook</code> can&rsquo;t do this, we need to use the second new tool on the block, <code>ansible-navigator</code>:</p>
@@ -910,24 +910,27 @@ sudo yum install ansible-builder
 <li>Configure <code>ansible-navigator</code> to use the previously created EE either by
 <ul>
 <li>specifying it on the command line</li>
-<li>or by creating an <code>ansible-navigator.yml</code> configuration file.</li>
+<li>or by creating an <code>.ansible-navigator.yml</code> configuration file.</li>
 </ul>
 </li>
 <li>To specify the EE image on the command line, look for <code>Specify the name of the execution environment image</code> in the output of <code>ansible-navigator --help</code>.</li>
-<li>Or if you prefer to make the necessary changes in the (already existing) <code>~/.ansible-navigator.yaml</code> file:</li>
+<li>Or if you prefer to use a config file, create a <code>~/.ansible-navigator.yaml</code> dot-file and add this content:</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 <span style="color:#66d9ef">ansible-navigator</span>:
   <span style="color:#66d9ef">execution-environment</span>:
     <span style="color:#66d9ef">image</span>: ee-ansible-demo:<span style="color:#ae81ff">0.1.0</span>
 </code></pre></div><ul>
-<li>After pointing to our new EE, run <code>ansible-navigator</code> and start to explore its features. Navigating is straight forward, try the following:
+<li>After pointing to our new EE, run <code>ansible-navigator</code> and start to explore its features. Navigating is straight forward, first check the <code>ee-ansible-demo</code> EE contains the <code>containers.podman</code> collection:
 <ul>
 <li>Get a list of included collections with <code>:collections</code> on the start page. <code>ESC</code> always takes you back one step in the menu structure.</li>
-<li>Inspect the image with <code>:images</code></li>
-<li>Just look around and remember <code>ESC</code> is your friend when you got lost in menus items&hellip;</li>
 </ul>
 </li>
+</ul>
+<p>Then have a look at the included EE images:</p>
+<ul>
+<li>Inspect the image with <code>:images</code>, choose an image by typing the row number</li>
+<li>Just look around and remember <code>ESC</code> is your friend when you got lost in menus items&hellip;</li>
 <li>Exit <code>ansible-navigator</code></li>
 </ul>
 <p>Now we finally want to run a Playbook to test the new EE. The demo Playbook you used before in Automation Controller is part of the GitHub repo <code>ee-flow</code> you checked out already. So we just need an inventory to go with it.</p>
@@ -946,7 +949,7 @@ sudo yum install ansible-builder
 <li>Start <code>ansible-navigator</code> and run the Playbook:
 <ul>
 <li><code>:run ~/ee-flow/deploy-container.yml -i ~/ee-flow/ansible-builder/lab_inventory.ini</code></li>
-<li>While it&rsquo;s running look at the task execution by hitting a line number.</li>
+<li>While it&rsquo;s running enter the line number for the play <code>deploy httpd container</code>, this will bring you to the task list from where you can inspect the running tasks.</li>
 <li>After the run has finished, leave <code>ansible-navigator</code> with multiple <code>ESC</code></li>
 <li>Check the deployment worked:</li>
 </ul>
@@ -1425,19 +1428,19 @@ sudo yum install ansible-builder
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1674658610"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1674658610"></script>
-    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1674658610"></script>
-    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1674658610"></script>
-    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1674658610"></script>
-    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/clipboard.min.js?1674736116"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.min.js?1674736116"></script>
+    <script src="https://ansible-learnfest.github.io/js/perfect-scrollbar.jquery.min.js?1674736116"></script>
+    <script src="https://ansible-learnfest.github.io/js/jquery.sticky.js?1674736116"></script>
+    <script src="https://ansible-learnfest.github.io/js/featherlight.min.js?1674736116"></script>
+    <script src="https://ansible-learnfest.github.io/js/highlight.pack.js?1674736116"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1674658610"></script>
-    <script src="https://ansible-learnfest.github.io/js/learn.js?1674658610"></script>
-    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1674658610"></script>
+    <script src="https://ansible-learnfest.github.io/js/modernizr.custom-3.6.0.js?1674736116"></script>
+    <script src="https://ansible-learnfest.github.io/js/learn.js?1674736116"></script>
+    <script src="https://ansible-learnfest.github.io/js/hugo-learn.js?1674736116"></script>
     
         
-            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1674658610"></script>
+            <script src="https://ansible-learnfest.github.io/mermaid/mermaid.js?1674736116"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
