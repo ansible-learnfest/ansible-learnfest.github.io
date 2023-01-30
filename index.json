@@ -25,7 +25,7 @@
 	"title": "Prepare Environment",
 	"tags": [],
 	"description": "",
-	"content": "Setup your LearnFest Environment For the Ansible LearnFest we use the AAP2 Linux Automation Workshop from RHPDS. If you run this workshop during Red Hat Tech Exchange, a lab was already created and details will be provided to you.\nIf you provision or order your own lab, make sure you enable the private automation hub.\n"
+	"content": "Setup your LearnFest Environment For the Ansible LearnFest we use the Ansible Automation Controller for Advanced Users from RHPDS. If you run this workshop during Red Hat Tech Exchange, a lab was already created and details will be provided to you.\nIf you provision or order your own lab, make sure you enable the private automation hub.\n"
 },
 {
 	"uri": "https://ansible-learnfest.github.io/archive/version-0.1/3-track-1/",
