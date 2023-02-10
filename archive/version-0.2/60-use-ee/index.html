@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://ansible-learnfest.github.io/images/favicon.png" type="image/png">
 
-    <title>Build an execution environment :: Ansible LearnFest</title>
+    <title>Use the EE in controller :: Ansible LearnFest</title>
 
     
     <link href="https://ansible-learnfest.github.io/css/nucleus.css?1676031262" rel="stylesheet">
@@ -41,7 +41,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/archive/version-0.1/4-track-2/2-build-ee/">
+  <body class="" data-url="/archive/version-0.2/60-use-ee/">
     <nav id="sidebar" class="">
 
 
@@ -292,7 +292,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/" title="Version 0.1" class="dd-item
-        parent
+        
         
         
         ">
@@ -593,7 +593,7 @@
   
     
     <li data-nav-id="/archive/version-0.1/4-track-2/" title="Track 2: Automation Content Developer" class="dd-item
-        parent
+        
         
         
         ">
@@ -649,7 +649,7 @@
     
     <li data-nav-id="/archive/version-0.1/4-track-2/2-build-ee/" title="Build an execution environment" class="dd-item
         
-        active
+        
         
         ">
       <a href="https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/2-build-ee/">
@@ -744,7 +744,7 @@
   
     
     <li data-nav-id="/archive/version-0.2/" title="Version 0.2" class="dd-item
-        
+        parent
         
         
         ">
@@ -930,7 +930,7 @@
     
     <li data-nav-id="/archive/version-0.2/60-use-ee/" title="Use the EE in controller" class="dd-item
         
-        
+        active
         
         ">
       <a href="https://ansible-learnfest.github.io/archive/version-0.2/60-use-ee/">
@@ -1025,13 +1025,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/archive/'>Archive</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/'>Version 0.1</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/'>Track 2: Automation Content Developer</a> > Build an execution environment
-          
-        
+            <a href='https://ansible-learnfest.github.io/'></a> > <a href='https://ansible-learnfest.github.io/archive/'>Archive</a> > <a href='https://ansible-learnfest.github.io/archive/version-0.2/'>Version 0.2</a> > Use the EE in controller
           
         
           
@@ -1048,10 +1042,13 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#task-2-build-an-execution-environment">Task 2: Build an execution environment</a>
+    <li><a href="#use-the-ee-in-controller">Use the EE in controller</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#tasks">Tasks</a></li>
+        <li><a href="#configure-ee-in-controller">Configure EE in Controller</a></li>
+        <li><a href="#bring-it-all-together">Bring it all together</a></li>
+        <li><a href="#and-finally-the-challenge">And finally: The Challenge</a></li>
         <li><a href="#goal">Goal</a></li>
         <li><a href="#tips">Tips</a></li>
       </ul>
@@ -1073,7 +1070,7 @@
           
             <h1>
               
-              Build an execution environment
+              Use the EE in controller
             </h1>
           
 
@@ -1081,72 +1078,102 @@
 
 
 
-	<h2 id="task-2-build-an-execution-environment">Task 2: Build an execution environment</h2>
+	<h2 id="use-the-ee-in-controller">Use the EE in controller</h2>
+<p>You have tested running a Playbook that depends on the Podman collection with <code>ansible-navigator</code> in your custom Execution Environment. Now it&rsquo;s time to use the custom EE with the Podman collection in Automation Controller.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>Install ansible-builder: on RHEL this is provided by the AAP repo, on Fedora you will need “pip install ansible-builder”, it’s recommended to use a virtual environment in this case.</li>
+<li>The custom EE was pushed and is published in PAH</li>
 </ul>
 <h3 id="tasks">Tasks</h3>
-<h4 id="build-execution-environment">Build Execution Environment</h4>
 <ul>
-<li>
-<p>Overview: Create an execution environment with the following requirements</p>
-<ul>
-<li>Base image is <code>ee-supported-rhel8</code></li>
-<li>Add a community collection e.g. <code>containers.podman</code></li>
-<li>Add a supported content collection e.g. <code>azure.azcollection</code></li>
-<li>Experiment with the other options, e.g. adding an RPM or Python package</li>
+<li>Check Automation Controller is configured to use EE&rsquo;s in PAH</li>
+<li>Use the custom EE in Controller</li>
 </ul>
-</li>
-<li>
-<p>Create the needed definition files to build the EE according to the specs above.</p>
+<h3 id="configure-ee-in-controller">Configure EE in Controller</h3>
 <ul>
-<li>
-<p>You can adapt the files from <a href="https://gitlab.com/cjung/ansible-ee-intro/-/tree/main/ansible-builder">here</a> (from the <code>Simple EE example</code> linked to in the <strong>Tips</strong> section).</p>
-</li>
-<li>
-<p>In your EE definition file set the base image to (Red Hat Registry access required)</p>
-<pre><code>build_arg_defaults:
-EE_BASE_IMAGE: 'registry.redhat.io/ansible-automation-platform-22/ee-minimal-rhel8'
-</code></pre></li>
-<li>
-<p>Use <code>ansible-builder</code> to build the EE, for example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-builder -f /path/to/your/definition.yml -t yourname:1.0.0
-</code></pre></div></li>
-</ul>
-</li>
-</ul>
-<h4 id="use-the-execution-environment">Use the Execution Environment</h4>
+<li>Check the <strong>Credential</strong> <code>Automation Hub Container Registry</code> points to PAH
 <ul>
-<li>Configure <code>ansible-navigator</code> to use the previously created EE either by specifying it on the command line or by creating an <code>ansible-navigator.yml</code> configuration file (you have one from Track 1).</li>
-<li>Inspect your EE by using <code>ansible-navigator</code>, e.g. to get the list of included collections, ansible versions etc.</li>
-<li>Run a playbook with your EE and verify everything works as expected. Why not deploy Azure objects?
-<ul>
-<li>Use environment variables to provide your Azure credentials. Red Hatters can get Azure credentials from RHPDS’ Azure Blank Open environment.</li>
-<li>Write a playbook using the <code>azure.azcollection</code> to create objects in Azure</li>
-<li>you can find an example playbook in the <a href="https://github.com/ansible-learnfest/playbooks-infra">playbook-infra</a> project</li>
+<li><strong>Name</strong>: Automation Hub Container Registry</li>
+<li><strong>Organization</strong>: Default</li>
+<li><strong>Credential Type</strong>: Container Registry</li>
+<li><strong>Authentication URL</strong>:</li>
+<li><strong>Username</strong>: admin</li>
+<li><strong>Password</strong>: &lt;your secret password&gt;</li>
 </ul>
 </li>
 </ul>
 
-<div class="notices note" ><p>In a production environment we typically recommend to use the <code>ee-minimal-rhel8</code> as a base image and only add the collections we specifically need. To make this lab not too complex, we decided to use the EE supported as a base image though.</p>
+<div class="notices note" ><p>You can find the Authentication URL on your private automation hub by navigating to <strong>Execution Environments</strong>, select the EE you want to use and then in <strong>Details</strong>.</p>
 </div>
 
+<ul>
+<li>Go to <code>Execution Environments</code> and add the new EE
+<ul>
+<li><strong>Name</strong>: ee-ansible-demo</li>
+<li><strong>Image</strong>: &lt;PAH Hostname&gt;/&lt;image name&gt;:&lt;tag&gt;</li>
+<li><strong>Pull</strong>: Always</li>
+<li><strong>Registry Credential</strong>: Automation Hub Container Registry</li>
+<li><strong>Organization</strong>: Default</li>
+</ul>
+</li>
+</ul>
+
+<div class="notices note" ><p>Get the image location from your PAH: In <strong>Execution Environments</strong> click the image.</p>
+</div>
+
+<h3 id="bring-it-all-together">Bring it all together</h3>
+<p>This time we&rsquo;ll run the Playbook you used before, but in your custom EE! That means we shouldn&rsquo;t have to use a <code>requirements.yml</code> file to automatically load the needed collection because <code>containers.podman</code> is already included in the EE.</p>
+<ul>
+<li>Create a new <strong>Project</strong> using <code>https://github.com/ansible-learnfest/ee-flow.git</code> <strong>with the branch <code>wo-requirements</code></strong>. This branch contains no <code>requirement.yml</code> to automatically add the collection. If you want to double check, have a look a the Job output and you&rsquo;ll notice that no collection was installed during project sync.</li>
+<li>Create a <strong>Job Template</strong> with the same settings as in the <code>Using Private Automation Hub</code> chapter, or just create a copy of it. We want to make one change in the copied job template:
+<ul>
+<li>Set the <strong>Execution Environment</strong> to <code>ee-ansible-demo</code> you just created in the previous section of this lab.</li>
+</ul>
+</li>
+<li>Edit your  <strong>Workshop Inventory</strong>: add <code>node3.&lt;LABID&gt;.internal</code> and disable <code>node1.&lt;LABID&gt;.internal</code>.</li>
+<li>Run the Job Template and check the outcome</li>
+</ul>
+<h3 id="and-finally-the-challenge">And finally: The Challenge</h3>
+<p>Now that you have learned how all the stages of building, testing, pushing and using a custom Execution Environment work, do it without help from the guide. Here are your tasks:</p>
+<ul>
+<li>The Playbook <code>enforce-selinux.yml</code> in <code>https://github.com/ansible-learnfest/playbooks-challenge.git</code> should be run with your custom EE against your managed nodes.</li>
+<li>It uses a collection that <strong>is not part of your EE</strong> yet.</li>
+</ul>
+<p>So this is what you have to do:</p>
+<ul>
+<li>Add the needed collection to your EE definition and build a new version.</li>
+<li>Because the collection comes from Red Hat Automation Hub and not Ansible Galaxy, you need to create a <code>ansible.cfg</code> like this (fill in your AH token):</li>
+</ul>
+<pre><code>[galaxy]
+server_list = automation_hub
+
+[galaxy_server.automation_hub]
+url=https://cloud.redhat.com/api/automation-hub/
+auth_url=https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+token=my_ah_token
+</code></pre><ul>
+<li>Tell <code>ansible-builder</code> in the definition file to read the <code>ansible.cfg</code> file:</li>
+</ul>
+<pre><code>[...]
+dependencies:
+  galaxy: requirements.yml
+  python: requirements.txt
+  system: bindep.txt
+
+ansible_config: /path/to/ansible.cfg
+[...]
+</code></pre><ul>
+<li>Using <code>ansible-navigator</code> inspect the new image to contain the needed collection</li>
+<li>Push the new image to your PAH</li>
+<li>Create a <strong>Job Template</strong> using the <strong>Project</strong> with the <code>enforce-selinux.yml</code> Playbook and the new version of the EE</li>
+<li>Run it!</li>
+</ul>
 <h3 id="goal">Goal</h3>
 <ul>
-<li>Build an EE adding two collections</li>
-<li>Use your execution environment to create an instance in Azure</li>
-<li>Don&rsquo;t forget to remove the instance and all associated resources - you can actually just remove the <code>resource group</code> which will remove all objects created within.</li>
+<li>Get familiar with using EE&rsquo;s in controller and different job templates</li>
 </ul>
 <h3 id="tips">Tips</h3>
-<ul>
-<li><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html/ansible_builder_guide">Ansible-builder documentation</a></li>
-<li><a href="https://ansible-builder.readthedocs.io/en/stable/index.html">Ansible Builder upstream documentation</a></li>
-<li><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.1/html/ansible_navigator_creator_guide/index">Ansible-navigator documentation</a></li>
-<li><a href="https://ansible-navigator.readthedocs.io/en/latest/">Ansible Builder upstream documentation</a></li>
-<li><a href="https://access.redhat.com/articles/3642632">List of certified collections</a></li>
-<li><a href="https://gitlab.com/cjung/ansible-ee-intro">Simple EE example</a></li>
-</ul>
+<p>You can disable automation controller&rsquo;s feature to automatically download and install Ansible Collections by navigating to <strong>Settings</strong> -&gt; <strong>Job Settings</strong>. Here you can disable <code>Enable Collection(s) Download</code> and <code>Enable Role Download</code>. By doing so, you force the automation controller to only use collections which are already part of the execution environment. This can be useful to make sure the collection inside the EE is not overridden by a newer version provided by your private automation hub or Ansible Galaxy. This gives you more predictable and reproducible Ansible Playbook execution.</p>
 
 
 
@@ -1318,56 +1345,8 @@ EE_BASE_IMAGE: 'registry.redhat.io/ansible-automation-platform-22/ee-minimal-rhe
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1407,182 +1386,6 @@ EE_BASE_IMAGE: 'registry.redhat.io/ansible-automation-platform-22/ee-minimal-rhe
                     
                     
 
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
                     
             
         
@@ -1702,6 +1505,226 @@ EE_BASE_IMAGE: 'registry.redhat.io/ansible-automation-platform-22/ee-minimal-rhe
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -1729,10 +1752,10 @@ EE_BASE_IMAGE: 'registry.redhat.io/ansible-automation-platform-22/ee-minimal-rhe
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/1-vscode/" title="The VSCode extension"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://ansible-learnfest.github.io/archive/version-0.2/55-transfer-ee/" title="Transfer Execution Environment"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://ansible-learnfest.github.io/archive/version-0.1/4-track-2/3-transfer-ee/" title="Transfer Execution Environment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://ansible-learnfest.github.io/archive/version-0.2/1-intro/" title="Introduction" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
